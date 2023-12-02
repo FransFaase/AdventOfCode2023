@@ -15,5 +15,6 @@ See further [Day 1](Day01.md).
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+  2   03:22:37  23107      0   12:35:16  66187      0
   1   02:18:29  21137      0   03:14:36  16210      0
 ```

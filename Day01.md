@@ -1,4 +1,4 @@
-# Day 1 of Advent of Code 2022
+# Day 1 of Advent of Code 2023
 
 I started at 7:50 (CET). I read the puzzle text and downloaded my
 puzzle input. I am going to try to do this in one try:
