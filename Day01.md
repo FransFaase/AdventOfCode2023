@@ -8,37 +8,37 @@ puzzle input. I am going to try to do this in one try:
 
 int main(int argc, char *argv)
 {
-	FILE *f = fopen("input/day01.txt", "r");
-	
-	int sum = 0;
-	
-	char ch = fgetc(f);
-	while (!feof(f))
-	{
-		char first = ' ';
-		char last = ' ';
-		
-		while (!feof(f) && ch != '\n')
-		{
-			if ('0' <= ch && ch <= '9')
-			{
-				if (first == ' ')
-					first = ch;
-				last = ch;
-			}
-			ch = fgetc(f);
-		}
-		if (first == ' ' || last == ' ')
-		{
-			printf("Error\n");
-			break;
-		}
-		sum += 10 * (first - '0') + (last - '0');
-	}
-	if (!feof(f))
-		ch = fgetc(f);
+    FILE *f = fopen("input/day01.txt", "r");
+    
+    int sum = 0;
+    
+    char ch = fgetc(f);
+    while (!feof(f))
+    {
+        char first = ' ';
+        char last = ' ';
+        
+        while (!feof(f) && ch != '\n')
+        {
+            if ('0' <= ch && ch <= '9')
+            {
+                if (first == ' ')
+                    first = ch;
+                last = ch;
+            }
+            ch = fgetc(f);
+        }
+        if (first == ' ' || last == ' ')
+        {
+            printf("Error\n");
+            break;
+        }
+        sum += 10 * (first - '0') + (last - '0');
+    }
+    if (!feof(f))
+        ch = fgetc(f);
 
-	printf("%d\n", sum);
+    printf("%d\n", sum);
 }
 ```
 
@@ -67,38 +67,38 @@ is put inside the loop.
 
 int main(int argc, char *argv)
 {
-	FILE *f = fopen("input/day01.txt", "r");
-	
-	int sum = 0;
-	
-	char ch = fgetc(f);
-	while (!feof(f))
-	{
-		char first = ' ';
-		char last = ' ';
-		
-		while (!feof(f) && ch != '\n')
-		{
-			if ('0' <= ch && ch <= '9')
-			{
-				if (first == ' ')
-					first = ch;
-				last = ch;
-			}
-			ch = fgetc(f);
-		}
-		if (first == ' ' || last == ' ')
-		{
-			printf("Error\n");
-			break;
-		}
-		sum += 10 * (first - '0') + (last - '0');
+    FILE *f = fopen("input/day01.txt", "r");
+    
+    int sum = 0;
+    
+    char ch = fgetc(f);
+    while (!feof(f))
+    {
+        char first = ' ';
+        char last = ' ';
+        
+        while (!feof(f) && ch != '\n')
+        {
+            if ('0' <= ch && ch <= '9')
+            {
+                if (first == ' ')
+                    first = ch;
+                last = ch;
+            }
+            ch = fgetc(f);
+        }
+        if (first == ' ' || last == ' ')
+        {
+            printf("Error\n");
+            break;
+        }
+        sum += 10 * (first - '0') + (last - '0');
 
-		if (!feof(f))
-			ch = fgetc(f);
-	}
+        if (!feof(f))
+            ch = fgetc(f);
+    }
 
-	printf("%d\n", sum);
+    printf("%d\n", sum);
 }
 ```
 
@@ -120,55 +120,55 @@ as well:
 
 int main(int argc, char *argv)
 {
-	FILE *f = fopen("input/day01.txt", "r");
+    FILE *f = fopen("input/day01.txt", "r");
 
-	const char *digit_words[10] = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+    const char *digit_words[10] = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-	int sum = 0;
-	
-	char line[100];
-	while (fgets(line, 99, f))
-	{
-		int first = -1;
-		int last = -1;
-		
-		for (char *s = line; *s != '\0'; s++)
-		{
-			int digit = -1;
-			if ('0' <= *s && *s <= '9')  
-			{
-				digit = *s - '0';
-			}
-			else if (strncmp(s, "one", 3) == 0)
-			{
-				for (int i = 0; i < 10; i++)
-				{
-					int len = strlen(digit_words[i]);
-					if (strncmp(s, digit_words[i], len))
-					{
-						digit = i + 1;
-						s += len - 1;
-						break;
-					}
-				}
-			}
-			if (digit != -1)
-			{
-				if (first == -1)
-					first = digit;
-				last = digit;
-			}
-		}
+    int sum = 0;
+    
+    char line[100];
+    while (fgets(line, 99, f))
+    {
+        int first = -1;
+        int last = -1;
+        
+        for (char *s = line; *s != '\0'; s++)
+        {
+            int digit = -1;
+            if ('0' <= *s && *s <= '9')  
+            {
+                digit = *s - '0';
+            }
+            else if (strncmp(s, "one", 3) == 0)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    int len = strlen(digit_words[i]);
+                    if (strncmp(s, digit_words[i], len))
+                    {
+                        digit = i + 1;
+                        s += len - 1;
+                        break;
+                    }
+                }
+            }
+            if (digit != -1)
+            {
+                if (first == -1)
+                    first = digit;
+                last = digit;
+            }
+        }
 
-		if (first == -1 || last == -1)
-		{
-			printf("Error\n");
-			break;
-		}
-		sum += 10 * first + last;
-	}
+        if (first == -1 || last == -1)
+        {
+            printf("Error\n");
+            break;
+        }
+        sum += 10 * first + last;
+    }
 
-	printf("%d\n", sum);
+    printf("%d\n", sum);
 }
 ```
 
@@ -191,56 +191,56 @@ of the browser.) This resulted in the following program:
 ```c
 int main(int argc, char *argv)
 {
-	FILE *f = fopen("input/day01.txt", "r");
+    FILE *f = fopen("input/day01.txt", "r");
 
-	const char *digit_words[9] = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+    const char *digit_words[9] = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-	int sum = 0;
-	
-	char line[100];
-	while (fgets(line, 99, f))
-	{
-		int first = -1;
-		int last = -1;
-		
-		for (char *s = line; *s != '\0'; s++)
-		{
-			int digit = -1;
-			if ('0' <= *s && *s <= '9')  
-			{
-				digit = *s - '0';
-			}
-			else
-			{
-				for (int i = 0; i < 9; i++)
-				{
-					int len = strlen(digit_words[i]);
-					if (strncmp(s, digit_words[i], len) == 0)
-					{
-						digit = i + 1;
-						s += len - 1;
-						break;
-					}
-				}
-			}
-			if (digit != -1)
-			{
-				if (first == -1)
-					first = digit;
-				last = digit;
-			}
-		}
+    int sum = 0;
+    
+    char line[100];
+    while (fgets(line, 99, f))
+    {
+        int first = -1;
+        int last = -1;
+        
+        for (char *s = line; *s != '\0'; s++)
+        {
+            int digit = -1;
+            if ('0' <= *s && *s <= '9')  
+            {
+                digit = *s - '0';
+            }
+            else
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    int len = strlen(digit_words[i]);
+                    if (strncmp(s, digit_words[i], len) == 0)
+                    {
+                        digit = i + 1;
+                        s += len - 1;
+                        break;
+                    }
+                }
+            }
+            if (digit != -1)
+            {
+                if (first == -1)
+                    first = digit;
+                last = digit;
+            }
+        }
 
-		if (first == -1 || last == -1)
-		{
-			printf("Error\n");
-			break;
-		}
-		printf("%d %d\n", first, last);
-		sum += 10 * first + last;
-	}
+        if (first == -1 || last == -1)
+        {
+            printf("Error\n");
+            break;
+        }
+        printf("%d %d\n", first, last);
+        sum += 10 * first + last;
+    }
 
-	printf("%d\n", sum);
+    printf("%d\n", sum);
 }
 
 ```
@@ -252,63 +252,63 @@ returned the exact input (except for the input):
 ```c
 int main(int argc, char *argv)
 {
-	FILE *f = fopen("input/day01.txt", "r");
+    FILE *f = fopen("input/day01.txt", "r");
 
-	const char *digit_words[9] = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+    const char *digit_words[9] = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-	int sum = 0;
-	
-	char line[100];
-	while (fgets(line, 99, f))
-	{
-		int first = -1;
-		int last = -1;
-		
-		for (char *s = line; *s != '\0'; s++)
-		{
-			int digit = -1;
-			if ('0' <= *s && *s <= '9')  
-			{
-				digit = *s - '0';
-				printf("%c", *s);
-			}
-			else
-			{
-				for (int i = 0; i < 9; i++)
-				{
-					int len = strlen(digit_words[i]);
-					if (strncmp(s, digit_words[i], len) == 0)
-					{
-						digit = i + 1;
-						//s += len - 1;
-						printf("%s", digit_words[i]);
-						break;
-					}
-				}
-			}
-			
-			if (digit != -1)
-			{
-				//printf("%d ", digit);
-				if (first == -1)
-					first = digit;
-				last = digit;
-			}
-			else
-				printf("%c", *s);
-			
-		}
+    int sum = 0;
+    
+    char line[100];
+    while (fgets(line, 99, f))
+    {
+        int first = -1;
+        int last = -1;
+        
+        for (char *s = line; *s != '\0'; s++)
+        {
+            int digit = -1;
+            if ('0' <= *s && *s <= '9')  
+            {
+                digit = *s - '0';
+                printf("%c", *s);
+            }
+            else
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    int len = strlen(digit_words[i]);
+                    if (strncmp(s, digit_words[i], len) == 0)
+                    {
+                        digit = i + 1;
+                        //s += len - 1;
+                        printf("%s", digit_words[i]);
+                        break;
+                    }
+                }
+            }
+            
+            if (digit != -1)
+            {
+                //printf("%d ", digit);
+                if (first == -1)
+                    first = digit;
+                last = digit;
+            }
+            else
+                printf("%c", *s);
+            
+        }
 
-		if (first == -1 || last == -1)
-		{
-			printf("Error\n");
-			break;
-		}
-		//printf(": %d %d\n", first, last);
-		sum += 10 * first + last;
-	}
+        if (first == -1 || last == -1)
+        {
+            printf("Error\n");
+            break;
+        }
+        //printf(": %d %d\n", first, last);
+        sum += 10 * first + last;
+    }
 
-	printf("%d\n", sum);
+    printf("%d\n", sum);
 }
 ```
 There seems to be no error. But then I noticed that the last digit in

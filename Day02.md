@@ -13,8 +13,8 @@ num_t sum_good1 = 0;
 
 void process_line(int n, char *line)
 {
-	if (good1(line))
-		sum_good1 += n;
+    if (good1(line))
+        sum_good1 += n;
 }
 ```
 
@@ -23,43 +23,43 @@ Next a function to check if a line is correct for the first puzzle:
 ```c
 bool good1(char *line)
 {
-	char *s = line;
-	for (;;)
-	{
-		for (;;)
-		{
-			int c = 0;
-			for (; '0' <= *s && *s <= '9'; s++)
-				c = 10 * c + *s - '0';
-			if (*s == ' ')
-				s++;
-			if (strncmp(s, "red", 3) == 0)
-			{
-				s += 3;
-				if (c > 12)
-					return FALSE;
-			}
-			else if (strncmp(s, "green", 5) == 0)
-			{
-				s += 5;
-				if (c > 13)
-					return FALSE;
-			}
-			else if (strncmp(s, "blue", 4) == 0)
-			{
-				s += 4;
-				if (c > 14)
-					return FALSE;
-			}
-			if (*s != ',')
-				break;
-			s++;
-		}
-		if (*s != ';')
-			break;
-		s++;
-	}
-	return TRUE;
+    char *s = line;
+    for (;;)
+    {
+        for (;;)
+        {
+            int c = 0;
+            for (; '0' <= *s && *s <= '9'; s++)
+                c = 10 * c + *s - '0';
+            if (*s == ' ')
+                s++;
+            if (strncmp(s, "red", 3) == 0)
+            {
+                s += 3;
+                if (c > 12)
+                    return FALSE;
+            }
+            else if (strncmp(s, "green", 5) == 0)
+            {
+                s += 5;
+                if (c > 13)
+                    return FALSE;
+            }
+            else if (strncmp(s, "blue", 4) == 0)
+            {
+                s += 4;
+                if (c > 14)
+                    return FALSE;
+            }
+            if (*s != ',')
+                break;
+            s++;
+        }
+        if (*s != ';')
+            break;
+        s++;
+    }
+    return TRUE;
 }
 ```
 
@@ -72,19 +72,19 @@ and calls the `process_line` function.
 
 int main(int argc, char *argv)
 {
-	FILE *f = fopen("input/day02.txt", "r");
-	
-	char line[500];
-	while (fgets(line, 499, f))
-	{
-		char *s = line + 5;
-		
-		int n = 0;	
-			for (; '0' <= *s && *s <= '9'; s++)
-				n = 10 * n + *s - '0';
-		process_line(n, s + 2);
-	}
-	printf("%lld\n", sum_good1);
+    FILE *f = fopen("input/day02.txt", "r");
+    
+    char line[500];
+    while (fgets(line, 499, f))
+    {
+        char *s = line + 5;
+        
+        int n = 0;    
+            for (; '0' <= *s && *s <= '9'; s++)
+                n = 10 * n + *s - '0';
+        process_line(n, s + 2);
+    }
+    printf("%lld\n", sum_good1);
 }
 ```
 
@@ -112,47 +112,47 @@ a print function:
 ```c
 bool good1(char *line)
 {
-	char *s = line;
-	for (;;)
-	{
-		for (;;)
-		{
-			if (*s == ' ')
-				s++;
-			int c = 0;
-			for (; '0' <= *s && *s <= '9'; s++)
-				c = 10 * c + *s - '0';
-			if (*s == ' ')
-				s++;
-			if (strncmp(s, "red", 3) == 0)
-			{
-				s += 3;
-				if (c > 12)
-					return FALSE;
-			}
-			else if (strncmp(s, "green", 5) == 0)
-			{
-				s += 5;
-				if (c > 13)
-					return FALSE;
-			}
-			else if (strncmp(s, "blue", 4) == 0)
-			{
-				s += 4;
-				if (c > 14)
-					return FALSE;
-			}
-			if (*s != ',')
-				break;
-			s++;
-		}
-		if (*s != ';')
-			break;
-		s++;
-	}
-	if (*s != '\n')
-		printf("Rest: %s\n", s);
-	return TRUE;
+    char *s = line;
+    for (;;)
+    {
+        for (;;)
+        {
+            if (*s == ' ')
+                s++;
+            int c = 0;
+            for (; '0' <= *s && *s <= '9'; s++)
+                c = 10 * c + *s - '0';
+            if (*s == ' ')
+                s++;
+            if (strncmp(s, "red", 3) == 0)
+            {
+                s += 3;
+                if (c > 12)
+                    return FALSE;
+            }
+            else if (strncmp(s, "green", 5) == 0)
+            {
+                s += 5;
+                if (c > 13)
+                    return FALSE;
+            }
+            else if (strncmp(s, "blue", 4) == 0)
+            {
+                s += 4;
+                if (c > 14)
+                    return FALSE;
+            }
+            if (*s != ',')
+                break;
+            s++;
+        }
+        if (*s != ';')
+            break;
+        s++;
+    }
+    if (*s != '\n')
+        printf("Rest: %s\n", s);
+    return TRUE;
 }
 ```
 
@@ -178,63 +178,63 @@ num_t sum_sol2 = 0;
 
 void process_line(int n, char *line)
 {
-	...
-	sum_sol2 += calc2(line);
+    ...
+    sum_sol2 += calc2(line);
 }
 
 int main(int argc, char *argv)
 {
-	...
-	printf("%lld\n", sum_sol2);
+    ...
+    printf("%lld\n", sum_sol2);
 }
 
 
 int calc2(char *line)
 {
-	char *s = line;
-	int min_red = 0;
-	int min_green = 0;
-	int min_blue = 0;
-	for (;;)
-	{
-		for (;;)
-		{
-			if (*s == ' ')
-				s++;
-			int c = 0;
-			for (; '0' <= *s && *s <= '9'; s++)
-				c = 10 * c + *s - '0';
-			if (*s == ' ')
-				s++;
-			if (strncmp(s, "red", 3) == 0)
-			{
-				s += 3;
-				if (c > min_red)
-					min_red = c;
-			}
-			else if (strncmp(s, "green", 5) == 0)
-			{
-				s += 5;
-				if (c > min_green)
-					min_green = c;
-			}
-			else if (strncmp(s, "blue", 4) == 0)
-			{
-				s += 4;
-				if (c > min_blue)
-					min_blue = c;
-			}
-			if (*s != ',')
-				break;
-			s++;
-		}
-		if (*s != ';')
-			break;
-		s++;
-	}
-	if (*s != '\n')
-		printf("Rest: %s\n", s);
-	return min_red * min_green * min_blue;
+    char *s = line;
+    int min_red = 0;
+    int min_green = 0;
+    int min_blue = 0;
+    for (;;)
+    {
+        for (;;)
+        {
+            if (*s == ' ')
+                s++;
+            int c = 0;
+            for (; '0' <= *s && *s <= '9'; s++)
+                c = 10 * c + *s - '0';
+            if (*s == ' ')
+                s++;
+            if (strncmp(s, "red", 3) == 0)
+            {
+                s += 3;
+                if (c > min_red)
+                    min_red = c;
+            }
+            else if (strncmp(s, "green", 5) == 0)
+            {
+                s += 5;
+                if (c > min_green)
+                    min_green = c;
+            }
+            else if (strncmp(s, "blue", 4) == 0)
+            {
+                s += 4;
+                if (c > min_blue)
+                    min_blue = c;
+            }
+            if (*s != ',')
+                break;
+            s++;
+        }
+        if (*s != ';')
+            break;
+        s++;
+    }
+    if (*s != '\n')
+        printf("Rest: %s\n", s);
+    return min_red * min_green * min_blue;
 }
 
 ```
