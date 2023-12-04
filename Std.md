@@ -23,13 +23,16 @@ A function to read the input into a array of lines:
 ```c
 typedef char *char_p;
 
-char **read_file(const char *name, int *nr_lines)
+char **lines;
+int nr_lines;
+
+void read_file(const char *name)
 {
-    *nr_lines = 0;
+    nr_lines = 0;
     FILE *f = fopen(name, "r");
     if (f == 0)
     {
-        return 0;
+        return;
     }
     int fh = fileno(f);
     size_t length = lseek(fh, 0L, SEEK_END);
@@ -41,21 +44,17 @@ char **read_file(const char *name, int *nr_lines)
     // count the number of lines in the file
     for (int i = 0; i < length; i++)
         if (data[i] == '\n')
-            (*nr_lines)++;
+            nr_lines++;
     
-    
-    char **lines = (char**)malloc(*nr_lines * sizeof(char_p));
+    lines = (char**)malloc(nr_lines * sizeof(char_p));
     char *s = data;
-    for (int i = 0; i < *nr_lines; i++)
+    for (int i = 0; i < nr_lines; i++)
     {
         lines[i] = s;
-        
         
         while (*s != '\n')
             s++;
         *s++ = '\0';
     }
-    
-    return lines;
 }
 ```

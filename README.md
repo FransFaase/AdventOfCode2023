@@ -28,6 +28,11 @@ See further [Day 3](Day03.md).
 I have added the generic code and some other standard
 definition to the file [Std.md](Std.md).
 
+### Monday, December 4, 2022
+
+I read the puzzle text in the morning, before I went to the
+office, but only started working on it at 18:44. I solved
+both puzzles in about 70 minutes.
 
 ### Personal stats
 
@@ -35,6 +40,7 @@ definition to the file [Std.md](Std.md).
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+  4   13:14:44  68730      0   13:54:47  57852      0
   3   12:32:46  54666      0   13:02:57  45748      0
   2   03:22:37  23107      0   12:35:16  66187      0
   1   02:18:29  21137      0   03:14:36  16210      0
