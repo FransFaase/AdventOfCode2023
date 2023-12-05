@@ -34,12 +34,25 @@ I read the puzzle text in the morning, before I went to the
 office, but only started working on it at 18:44. I solved
 both puzzles in about 70 minutes.
 
+See further [Day 4](Day04.md).
+
+### Tuesday, December 5, 2022
+
+I solved the first part in the morning. The second part
+took me a big part of the evening to solve. Also watched
+some television in between. Looking at my rank for the
+second part and the number of people who only solved ths
+first part, it looks like this is really a hard puzzle.
+
+See further [Day 5](Day05.md).
+
 ### Personal stats
 
 
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+  5   03:17:05  18473      0   16:42:04  32904      0
   4   13:14:44  68730      0   13:54:47  57852      0
   3   12:32:46  54666      0   13:02:57  45748      0
   2   03:22:37  23107      0   12:35:16  66187      0
