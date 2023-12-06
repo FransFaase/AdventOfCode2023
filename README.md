@@ -46,12 +46,20 @@ first part, it looks like this is really a hard puzzle.
 
 See further [Day 5](Day05.md).
 
+### Wednesday, December 6, 2022
+
+I started reading the puzzle aroung 8:45 and started coding
+around 9:00 and finished within half an hour.
+
+See further [Day 6](Day06.md).
+
 ### Personal stats
 
 
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+  6   03:13:39  23335      0   03:28:46  23084      0
   5   03:17:05  18473      0   16:42:04  32904      0
   4   13:14:44  68730      0   13:54:47  57852      0
   3   12:32:46  54666      0   13:02:57  45748      0
