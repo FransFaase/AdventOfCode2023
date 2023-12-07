@@ -7,8 +7,8 @@ Around 18:44 (CET), I worked a bit on [the standard library](Std.md). At
 ```c
 int main(int argc, char *argv)
 {
-	read_file("input/day04.txt");
-	solve1();
+    read_file("input/day04.txt");
+    solve1();
 }
 
 void solve1()
@@ -24,21 +24,21 @@ in column 43.
 ```c
 void solve1()
 {
-	num_t sum = 0;
-	for (int i = 0; i < nr_lines; i++)
-	{
-		char *line = lines[i];
-		num_t value = 0;
-		for (int j = 42; j < 117; j += 3)
-			for (int w = 10; w < 40; w += 3)
-				if (line[j] == line[w] && line[j+1] == line[w+1])
-				{
-					value = value == 0 ? 1 : 2 * value;
-					break;
-				}
-		sum += value;
-	}
-	printf("%lld\n", sum);
+    num_t sum = 0;
+    for (int i = 0; i < nr_lines; i++)
+    {
+        char *line = lines[i];
+        num_t value = 0;
+        for (int j = 42; j < 117; j += 3)
+            for (int w = 10; w < 40; w += 3)
+                if (line[j] == line[w] && line[j+1] == line[w+1])
+                {
+                    value = value == 0 ? 1 : 2 * value;
+                    break;
+                }
+        sum += value;
+    }
+    printf("%lld\n", sum);
 }
 ```
 
@@ -58,30 +58,30 @@ typedef int *int_p;
 
 void solve1()
 {
-	nr_matches = (int*)malloc(nr_lines * sizeof(int_p));
-	
-	num_t sum = 0;
-	for (int i = 0; i < nr_lines; i++)
-	{
-		char *line = lines[i];
-		num_t nr_match = 0;
-		for (int j = 42; j < 117; j += 3)
-			for (int w = 10; w < 40; w += 3)
-				if (line[j] == line[w] && line[j+1] == line[w+1])
-				{
-					nr_match++;
-					break;
-				}
-		nr_matches[i] = nr_match;
-		sum += nr_match == 0 ? 0 : 1 << (nr_match - 1);
-	}
-	printf("%lld\n", sum);
+    nr_matches = (int*)malloc(nr_lines * sizeof(int_p));
+    
+    num_t sum = 0;
+    for (int i = 0; i < nr_lines; i++)
+    {
+        char *line = lines[i];
+        num_t nr_match = 0;
+        for (int j = 42; j < 117; j += 3)
+            for (int w = 10; w < 40; w += 3)
+                if (line[j] == line[w] && line[j+1] == line[w+1])
+                {
+                    nr_match++;
+                    break;
+                }
+        nr_matches[i] = nr_match;
+        sum += nr_match == 0 ? 0 : 1 << (nr_match - 1);
+    }
+    printf("%lld\n", sum);
 }
 
 int main(int argc, char *argv)
 {
-	...
-	solve2();
+    ...
+    solve2();
 }
 
 void solve2()
@@ -98,20 +98,20 @@ figured out how to calculate the numbers.
 typedef num_t *num_p;
 void solve2()
 {
-	num_t *counts = (num_t*)malloc(nr_lines * sizeof(num_p));
-	for (int i = 0; i < nr_lines; i++)
-		counts[i] = 1;
-		
-	num_t count = 0;
-	for (int i = 0; i < nr_lines; i++)
-	{
-		count += counts[i];
-		int nr_match = nr_matches[i];
-		for (int i2 = 0; i2 < nr_match && i + 1 + i2 < nr_lines; i2++)
-			counts[i + 1 + i2] += counts[i];
-	}
-	
-	printf("%lld\n", count);
+    num_t *counts = (num_t*)malloc(nr_lines * sizeof(num_p));
+    for (int i = 0; i < nr_lines; i++)
+        counts[i] = 1;
+        
+    num_t count = 0;
+    for (int i = 0; i < nr_lines; i++)
+    {
+        count += counts[i];
+        int nr_match = nr_matches[i];
+        for (int i2 = 0; i2 < nr_match && i + 1 + i2 < nr_lines; i2++)
+            counts[i + 1 + i2] += counts[i];
+    }
+    
+    printf("%lld\n", count);
 }
 
 ```

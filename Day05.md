@@ -17,31 +17,31 @@ a function that reads the seed numbers.
 ```c
 int main(int argc, char *argv)
 {
-	read_file("input/day05.txt");
-	solve1();
+    read_file("input/day05.txt");
+    solve1();
 }
 
 void solve1()
 {
-	num_t min_sol = -1;
-	
-	for (char *seeds = lines[0] + 6; *seeds == ' ';)
-	{
-		seeds++;
-		num_t seed = parse_number(&seeds);
-		
-		num_t answer = process1(seed);
-		
-		if (min_sol == -1 || answer < min_sol)
-			min_sol = answer;
-	}
-	printf("%lld\n", min_sol);
+    num_t min_sol = -1;
+    
+    for (char *seeds = lines[0] + 6; *seeds == ' ';)
+    {
+        seeds++;
+        num_t seed = parse_number(&seeds);
+        
+        num_t answer = process1(seed);
+        
+        if (min_sol == -1 || answer < min_sol)
+            min_sol = answer;
+    }
+    printf("%lld\n", min_sol);
 }
 
 num_t process1(num_t seed)
 {
-	printf("%lld\n", seed);
-	return 0;
+    printf("%lld\n", seed);
+    return 0;
 }
 ```
 
@@ -51,34 +51,34 @@ Now, lets see if we can implement something for the processing:
 ```c
 num_t process1(num_t seed)
 {
-	printf("Start %lld\n", seed);
-	for (int line_nr = 1; line_nr < nr_lines; )
-	{
-		int nr_mappings = 0;
-		line_nr += 2;
-		while (line_nr < nr_lines && is_digit(lines[line_nr][0]))
-		{
-			char *line = lines[line_nr];
-			num_t to = parse_number(&line);
-			line++;
-			num_t from = parse_number(&line);
-			line++;
-			num_t length = parse_number(&line);
-			
-			if (from <= seed && seed < from + length && nr_mappings == 0)
-			{
-				seed = to + seed - from;
-				nr_mappings++;
-				printf("To: %lld\n", seed);
-			}
-			line_nr++;
-		}
-		if (nr_mappings > 1)
-			printf("More than one\n");
-		printf("\n");
-	}
-	printf("Result %lld\n", seed);
-	return seed;
+    printf("Start %lld\n", seed);
+    for (int line_nr = 1; line_nr < nr_lines; )
+    {
+        int nr_mappings = 0;
+        line_nr += 2;
+        while (line_nr < nr_lines && is_digit(lines[line_nr][0]))
+        {
+            char *line = lines[line_nr];
+            num_t to = parse_number(&line);
+            line++;
+            num_t from = parse_number(&line);
+            line++;
+            num_t length = parse_number(&line);
+            
+            if (from <= seed && seed < from + length && nr_mappings == 0)
+            {
+                seed = to + seed - from;
+                nr_mappings++;
+                printf("To: %lld\n", seed);
+            }
+            line_nr++;
+        }
+        if (nr_mappings > 1)
+            printf("More than one\n");
+        printf("\n");
+    }
+    printf("Result %lld\n", seed);
+    return seed;
 }
 ```
 
@@ -93,30 +93,30 @@ it a try with a brute force method.
 ```c
 int main(int argc, char *argv)
 {
-	...
-	solve2();
+    ...
+    solve2();
 }
 
 void solve2()
 {
-	num_t min_sol = -1;
-	
-	for (char *seeds = lines[0] + 6; *seeds == ' ';)
-	{
-		seeds++;
-		num_t from = parse_number(&seeds);
-		seeds++;
-		num_t length = parse_number(&seeds);
-		printf("from %lld length %lld\n", from, length);	
-		for (num_t seed = from; seed < from + length; seed++)
-		{
-			num_t answer = process1(seed);
-			
-			if (min_sol == -1 || answer < min_sol)
-				min_sol = answer;
-		}
-	}
-	printf("%lld\n", min_sol);
+    num_t min_sol = -1;
+    
+    for (char *seeds = lines[0] + 6; *seeds == ' ';)
+    {
+        seeds++;
+        num_t from = parse_number(&seeds);
+        seeds++;
+        num_t length = parse_number(&seeds);
+        printf("from %lld length %lld\n", from, length);    
+        for (num_t seed = from; seed < from + length; seed++)
+        {
+            num_t answer = process1(seed);
+            
+            if (min_sol == -1 || answer < min_sol)
+                min_sol = answer;
+        }
+    }
+    printf("%lld\n", min_sol);
 }
 ```
 
@@ -128,51 +128,51 @@ of ranges. Let first write the function to find the answer and next implement.
 ```c
 void solve2()
 {
-	range_t *ranges = 0;
-	for (char *seeds = lines[0] + 6; *seeds == ' ';)
-	{
-		seeds++;
-		num_t from = parse_number(&seeds);
-		seeds++;
-		num_t length = parse_number(&seeds);
-		ranges_add_range(&ranges, from, from + length);
-		ranges_print(ranges, stdout); printf("\n");
-	}
-	ranges_print(ranges, stdout); printf("\n");
-	
-	for (int line_nr = 1; line_nr < nr_lines; )
-	{
-		int nr_mappings = 0;
-		line_nr += 2;
-		
-		range_t *new_ranges = 0;
-		
-		while (line_nr < nr_lines && is_digit(lines[line_nr][0]))
-		{
-			char *line = lines[line_nr];
-			num_t to = parse_number(&line);
-			line++;
-			num_t from = parse_number(&line);
-			line++;
-			num_t length = parse_number(&line);
-			printf("map %lld %lld %lld\n", to, from, length);
-		
-			range_t *selection = ranges_extract_range(&ranges, from, from + length);
-			ranges_print(selection, stdout); printf("\n");
-			
-			num_t shift = to - from;
-			
-			for (range_t *range = selection; range != 0; range = range->next)
-			{
-				ranges_add_range(&new_ranges, range->from + shift, range->to + shift);
-			}
-			line_nr++;
-		}
-		
-		ranges = new_ranges;
-		ranges_print(ranges, stdout); printf("\n");
-	}
-	printf("%lld\n", ranges->from);
+    range_t *ranges = 0;
+    for (char *seeds = lines[0] + 6; *seeds == ' ';)
+    {
+        seeds++;
+        num_t from = parse_number(&seeds);
+        seeds++;
+        num_t length = parse_number(&seeds);
+        ranges_add_range(&ranges, from, from + length);
+        ranges_print(ranges, stdout); printf("\n");
+    }
+    ranges_print(ranges, stdout); printf("\n");
+    
+    for (int line_nr = 1; line_nr < nr_lines; )
+    {
+        int nr_mappings = 0;
+        line_nr += 2;
+        
+        range_t *new_ranges = 0;
+        
+        while (line_nr < nr_lines && is_digit(lines[line_nr][0]))
+        {
+            char *line = lines[line_nr];
+            num_t to = parse_number(&line);
+            line++;
+            num_t from = parse_number(&line);
+            line++;
+            num_t length = parse_number(&line);
+            printf("map %lld %lld %lld\n", to, from, length);
+        
+            range_t *selection = ranges_extract_range(&ranges, from, from + length);
+            ranges_print(selection, stdout); printf("\n");
+            
+            num_t shift = to - from;
+            
+            for (range_t *range = selection; range != 0; range = range->next)
+            {
+                ranges_add_range(&new_ranges, range->from + shift, range->to + shift);
+            }
+            line_nr++;
+        }
+        
+        ranges = new_ranges;
+        ranges_print(ranges, stdout); printf("\n");
+    }
+    printf("%lld\n", ranges->from);
 }
 
 ```
@@ -182,7 +182,7 @@ test code, which was really needed to get it working. Then, the above code, afte
 removing a small bug (forgot to incremenat `line_nr`) in the for loop nested in the
 while loop, which resulted in an infinite loop. In finding this, I added some
 print statements. And than, at 22:42, I the program returned the correct code.
-	
+    
 ### Executing this page
 
 The command I use to process this markdown file, is:

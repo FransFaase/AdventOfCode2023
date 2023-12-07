@@ -53,12 +53,26 @@ around 9:00 and finished within half an hour.
 
 See further [Day 6](Day06.md).
 
+### Thursday, December 7, 2022
+
+I did a bit in the morning, but most in the evening. I almost
+quite, because a correct answer for the first part of the
+puzzle was rejected because I gave some answers too quickly
+after eachother. Thinking that you made an error your solution,
+while there is no error and then going over your code, reading
+the puzzle description, checking everything over and over again,
+really can drive you crazy. I hope I remember the next time
+this happens that an answer can be rejected even it was correct.
+
+See further [Day 7](Day07.md).
+
 ### Personal stats
 
 
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+  7   15:25:09  47017      0   15:45:58  40883      0
   6   03:13:39  23335      0   03:28:46  23084      0
   5   03:17:05  18473      0   16:42:04  32904      0
   4   13:14:44  68730      0   13:54:47  57852      0
