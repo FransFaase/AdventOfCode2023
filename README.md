@@ -66,12 +66,21 @@ this happens that an answer can be rejected even it was correct.
 
 See further [Day 7](Day07.md).
 
+### Friday, December 8, 2022
+
+I solved the first step in the morning in about half an hour
+and also preparing my lunch. At 18:41, I started again and
+fount the answer for the second half at 19:54.
+
+See further [Day 8](Day08.md).
+
 ### Personal stats
 
 
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+  8   03:34:10  22444      0   13:54:05  35609      0
   7   15:25:09  47017      0   15:45:58  40883      0
   6   03:13:39  23335      0   03:28:46  23084      0
   5   03:17:05  18473      0   16:42:04  32904      0
