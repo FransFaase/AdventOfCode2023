@@ -74,12 +74,22 @@ fount the answer for the second half at 19:54.
 
 See further [Day 8](Day08.md).
 
+### Saturday, December 9, 2022
+
+I started reading the puzzle at 8:41 and solved both parts
+at 9:24. Second part of the puzzle was rather easy, having
+some mathematical knowledge, and (for me) gave a much smaller
+answer than the first half.
+
+See further [Day 9](Day09.md).
+
 ### Personal stats
 
 
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+  9   03:18:23  15681      0   03:24:33  15095      0
   8   03:34:10  22444      0   13:54:05  35609      0
   7   15:25:09  47017      0   15:45:58  40883      0
   6   03:13:39  23335      0   03:28:46  23084      0
