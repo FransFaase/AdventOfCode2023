@@ -91,10 +91,17 @@ other things, but did think a little bit about a solution
 that used the area of a polygon. When I started coding at
 13:39, I found the solution at 14:32 after also doing some
 things at home in the mean time. Besides some minor bugs
-with respect to `printf` argumnets, I found the solution in
+with respect to `printf` arguments, I found the solution in
 one try.
 
 See further [Day 10](Day10.md).
+
+### Sunday, December 11, 2022
+
+I started reading the puzzle at 7:44 and found the correct
+answer for both parts of the puzzle at 9:04.
+
+See further [Day 11](Day11.md).
 
 ### Personal stats
 
@@ -102,6 +109,7 @@ See further [Day 10](Day10.md).
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 11   02:26:42  11269      0   03:04:52  11201      0
  10   06:05:19  17735      0   08:32:20  11142      0
   9   03:18:23  15681      0   03:24:33  15095      0
   8   03:34:10  22444      0   13:54:05  35609      0

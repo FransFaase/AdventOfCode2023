@@ -338,6 +338,96 @@ void solve2()
 At 14:32, the above program returned the correct answer (twice actually).
 So, I guess the formula is correct.
 
+### Prolog
+
+When I looked at reddit for [day 10 solutions](https://www.reddit.com/r/adventofcode/comments/18evyu9/2023_day_10_solutions/),
+I noticed that but a few people had used the shoelace algorithm. I also
+realized that in the case of polygons on a square grid with only horizontal
+and vertical movements, there is even a simpler solution, which is just
+add the height for a movement to the left and substract the height for
+a movement to the right. Which is implemented in the code below. (Do note
+that now, in the formula, we need to multiply the value of `area` with two,
+because in the code above `area` contains twice the actual area.
+
+```c
+void solve2()
+{
+    int nr_cols = strlen(lines[0]);
+    
+    for (int is = 0; is < nr_lines; is++)
+        for (int js = 0; js < nr_cols; js++)
+            if (lines[is][js] == 'S')
+            {
+                for (int ds = 0; ds < 4; ds++)
+                {
+                    num_t steps = 0;
+                    num_t area = 0;
+                    num_t i = is;
+                    num_t j = js;
+                    int d = ds;
+                    for (bool go = TRUE; go; )
+                    {
+                        steps++;
+                        switch (d)
+                        {
+                            case 0: if (++j == nr_cols) go = FALSE; area += i; break;
+                            case 1: if (++i == nr_lines) go = FALSE; break;
+                            case 2: if (j-- == 0) go = FALSE; area -= i; break;
+                            case 3: if (i-- == 0) go = FALSE; break;
+                        }
+                        if (!go) break;
+                        
+                        if (lines[i][j] == 'S')
+                        {
+                            if (area < 0) area = -area;
+                            printf("%lld\n", 1 + (2 * area - steps) / 2);
+                            break;
+                        }
+                        switch (d)
+                        {
+                            case 0:
+                                switch (lines[i][j])
+                                {
+                                    case '-': break;
+                                    case '7': d = 1; break;
+                                    case 'J': d = 3; break;
+                                    default: go = FALSE;
+                                }
+                                break;
+                            case 1:
+                                switch (lines[i][j])
+                                {
+                                    case '|': break;
+                                    case 'J': d = 2; break;
+                                    case 'L': d = 0; break;
+                                    default: go = FALSE;
+                                }
+                                break;
+                            case 2:
+                                switch (lines[i][j])
+                                {
+                                    case '-': break;
+                                    case 'L': d = 3; break;
+                                    case 'F': d = 1; break;
+                                    default: go = FALSE;
+                                }
+                                break;
+                            case 3:
+                                switch (lines[i][j])
+                                {
+                                    case '|': break;
+                                    case 'F': d = 0; break;
+                                    case '7': d = 2; break;
+                                    default: go = FALSE;
+                                }
+                                break;
+                            default: go = FALSE;
+                        }
+                    }
+                }
+            }
+}
+```
     
 ### Executing this page
 
