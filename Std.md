@@ -53,7 +53,11 @@ void read_file(const char *name)
         lines[i] = s;
         
         while (*s != '\n')
+        {
+        	if (*s == '\r)
+        		*s = '\0';
             s++;
+        }
         *s++ = '\0';
     }
 }
