@@ -103,11 +103,18 @@ answer for both parts of the puzzle at 9:04.
 
 See further [Day 11](Day11.md).
 
-### Monday, December 12, 2022
+### Tuesday, December 12, 2022
 
 I started reading the puzzle around 8:20 and took me a long
 time to get everything working during the day. Only at 21:16
 in the evening did I find the solution for the second part.
+
+See further [Day 12](Day12.md).
+
+### Wednesday, December 12, 2022
+
+I started reading the puzzle around 7:05 and finished both
+parts at 7:46 without many problems.
 
 See further [Day 12](Day12.md).
 
@@ -117,6 +124,7 @@ See further [Day 12](Day12.md).
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 13   01:36:36   6324      0   01:46:23   4698      0
  12   03:44:33  10192      0   15:16:40  11981      0
  11   02:26:42  11269      0   03:04:52  11201      0
  10   06:05:19  17735      0   08:32:20  11142      0

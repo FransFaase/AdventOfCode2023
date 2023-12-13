@@ -481,7 +481,189 @@ num_t matches2(int c, char *digits, int d)
 The bug was that I had calculated the length of the 'codes' wrong.
 At 21:16, I found the correct answer with the code above.
 
+### Prolog
 
+I wonder if it would not have been better, if I had simply copied the
+codes and the numbers five times and adjusted the existing function for
+the second part.
+
+```c
+int main(int argc, char *argv[])
+{
+	...
+	solve2b();
+}
+
+void solve2b()
+{
+	num_t sum = 0;
+	for (int l = 0; l < nr_lines; l++)
+	{
+		char codes[120];
+		int digits[40];
+		char *s = lines[l];
+		int i = 0;
+		for (; s[i] != ' '; i++)
+			codes[i] = s[i];
+		codes[i] = ' ';
+		int d = 0;
+		s = s + i + 1;
+		for (;;)
+		{
+			digits[d++] = parse_number(&s);
+			if (*s != ',')
+				break;
+			s++;
+		}
+		digits[d] = 0;
+		
+		expand(codes, i, digits, d);
+		sum += matches2b(codes, digits);
+	}
+	printf("%lld\n", sum);
+}
+
+void expand(char *codes, int i, int *digits, int d)
+{
+}
+
+num_t matches2b(char *codes, int *digits)
+{
+	if (*digits == 0)
+		while (*codes == '.' || *codes == '?')
+			codes++;
+	
+	if (*codes == ' ' && *digits == 0)
+	{
+		return 1;
+	}
+	
+	if (*codes == ' ' || *digits == 0)
+	{	
+		return 0;
+	}
+	num_t result = 0;
+		
+	int i = 0;
+	while (i < *digits && (codes[i] == '#' || codes[i] == '?'))
+		i++;
+	
+	if (i == *digits && codes[i] != '#')
+	{
+		if (codes[i] != ' ')
+			i++;
+		result += matches2b(codes + i, digits + 1);
+	}
+	if (codes[0] != '#')
+		result += matches2b(codes + 1, digits);
+	return result;
+}
+
+```
+
+The above code returns the correct answer for the first half of puzzle.
+Lets add memoization now.
+
+```c
+char m_codes[120];
+int m_digits[40];
+
+void solve2b()
+{
+	num_t sum = 0;
+	for (int l = 0; l < nr_lines; l++)
+	{
+		char *s = lines[l];
+		int i = 0;
+		for (; s[i] != ' '; i++)
+			m_codes[i] = s[i];
+		m_codes[i] = ' ';
+		int d = 0;
+		s = s + i + 1;
+		for (;;)
+		{
+			m_digits[d++] = parse_number(&s);
+			if (*s != ',')
+				break;
+			s++;
+		}
+		m_digits[d] = 0;
+		
+		expand(m_codes, i, m_digits, d);
+
+		for (int c = 0; c < 120; c++)
+			for (int d = 0; d < 31; d++)
+				memo[c][d] = -1;
+
+		sum += matches2b(m_codes, m_digits);
+	}
+	printf("%lld\n", sum);
+}
+
+num_t matches2b(char *codes, int *digits)
+{
+	if (*digits == 0)
+		while (*codes == '.' || *codes == '?')
+			codes++;
+	
+	if (*codes == ' ' && *digits == 0)
+	{
+		return 1;
+	}
+	
+	if (*codes == ' ' || *digits == 0)
+	{	
+		return 0;
+	}
+	
+	num_t *m = &memo[codes - m_codes][digits - m_digits];
+	if (*m != -1)
+		return *m;
+		
+	num_t result = 0;
+		
+	int i = 0;
+	while (i < *digits && (codes[i] == '#' || codes[i] == '?'))
+		i++;
+	
+	if (i == *digits && codes[i] != '#')
+	{
+		if (codes[i] != ' ')
+			i++;
+		result += matches2b(codes + i, digits + 1);
+	}
+	if (codes[0] != '#')
+		result += matches2b(codes + 1, digits);
+		
+	*m = result;
+	
+	return result;
+}
+
+```
+
+This still gives the correct answer. Now we only need to implement
+the `expand` method.
+
+```c
+void expand(char *codes, int i, int *digits, int d)
+{
+	char *s = codes + i;
+	for (int t = 0; t < 4; t++)
+	{
+		*s++ = '?';
+		for (int j = 0; j < i; j++)
+		{
+			*s++ = codes[j];
+			digits[d * t + j] = digits[j];
+		}
+	}
+	*s = ' ';
+	digits[d * 5] = 0;
+}
+```
+
+Now it returns the answer for the second part of the puzzle.
 
 	
 ### Executing this page
