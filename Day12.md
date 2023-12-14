@@ -15,50 +15,50 @@ Probably is sufficient for the first half.
 ```c
 int main(int argc, char *argv[])
 {
-	read_file("input/day12.txt");
-	solve1();
+    read_file("input/day12.txt");
+    solve1();
 }
 
 void solve1()
 {
-	num_t sum = 0;
-	for (int l = 0; l < nr_lines; l++)
-		sum += matches1(lines[l], strchr(lines[l], ' ') + 1);
-	printf("%lld\n", sum);
+    num_t sum = 0;
+    for (int l = 0; l < nr_lines; l++)
+        sum += matches1(lines[l], strchr(lines[l], ' ') + 1);
+    printf("%lld\n", sum);
 }
 
 num_t matches1(char *codes, char *digits)
 {
-	if (*digits == '\0')
-		while (*codes == '.' || *codes == '?')
-			codes++;
-	
-	if (*codes == ' ' && *digits == '\0')
-		return 1;
-	
-	if (*codes == ' ' || *digits == '\0')
-		return 0;
+    if (*digits == '\0')
+        while (*codes == '.' || *codes == '?')
+            codes++;
+    
+    if (*codes == ' ' && *digits == '\0')
+        return 1;
+    
+    if (*codes == ' ' || *digits == '\0')
+        return 0;
 
-	num_t result = 0;
-		
-	char *next_digits = digits;
-	num_t num = parse_number(&next_digits);
-	if (*next_digits == ',') next_digits++;
-	
-	int i = 0;
-	while (i < num && (codes[i] == '#' || codes[i] == '?'))
-		i++;
+    num_t result = 0;
+        
+    char *next_digits = digits;
+    num_t num = parse_number(&next_digits);
+    if (*next_digits == ',') next_digits++;
+    
+    int i = 0;
+    while (i < num && (codes[i] == '#' || codes[i] == '?'))
+        i++;
 
-	if (i == num && codes[i] != '#')
-	{
-		if (codes[i] != ' ')
-			i++;
-		result += matches1(codes + i, next_digits);
-	}
-	if (codes[i] != '#')
-		result += matches1(codes + 1, digits);
-	return result;
-}	
+    if (i == num && codes[i] != '#')
+    {
+        if (codes[i] != ' ')
+            i++;
+        result += matches1(codes + i, next_digits);
+    }
+    if (codes[i] != '#')
+        result += matches1(codes + 1, digits);
+    return result;
+}    
 ```
 
 At 9:09, I finished writing the above code and at 9:15 I finished
@@ -68,56 +68,56 @@ some debugging and test it on the example input.
 ```c
 void solve1()
 {
-	num_t sum = 0;
-	for (int l = 0; l < nr_lines; l++)
-	{
-		num_t v = matches1(lines[l], strchr(lines[l], ' ') + 1);
-		printf("Answer %lld\n", v);
-		sum += v;
-	}
-	
-	printf("%lld\n", sum);
+    num_t sum = 0;
+    for (int l = 0; l < nr_lines; l++)
+    {
+        num_t v = matches1(lines[l], strchr(lines[l], ' ') + 1);
+        printf("Answer %lld\n", v);
+        sum += v;
+    }
+    
+    printf("%lld\n", sum);
 }
 
 num_t matches1(char *codes, char *digits)
 {
-	printf("Matches %s | %s ", codes, digits);
-	if (*digits == '\0')
-		while (*codes == '.' || *codes == '?')
-			codes++;
-	
-	if (*codes == ' ' && *digits == '\0')
-	{
-		printf("=> 1\n");
-		return 1;
-	}
-	
-	if (*codes == ' ' || *digits == '\0')
-	{	
-		printf("=> 0\n");
-		return 0;
-	}
-	printf("\n");
-	num_t result = 0;
-		
-	char *next_digits = digits;
-	num_t num = parse_number(&next_digits);
-	if (*next_digits == ',') next_digits++;
-	
-	int i = 0;
-	while (i < num && (codes[i] == '#' || codes[i] == '?'))
-		i++;
-	
-	if (i == num && codes[i] != '#')
-	{
-		if (codes[i] != ' ')
-			i++;
-		result += matches1(codes + i, next_digits);
-	}
-	if (codes[0] != '#')
-		result += matches1(codes + 1, digits);
-	return result;
-}	
+    printf("Matches %s | %s ", codes, digits);
+    if (*digits == '\0')
+        while (*codes == '.' || *codes == '?')
+            codes++;
+    
+    if (*codes == ' ' && *digits == '\0')
+    {
+        printf("=> 1\n");
+        return 1;
+    }
+    
+    if (*codes == ' ' || *digits == '\0')
+    {    
+        printf("=> 0\n");
+        return 0;
+    }
+    printf("\n");
+    num_t result = 0;
+        
+    char *next_digits = digits;
+    num_t num = parse_number(&next_digits);
+    if (*next_digits == ',') next_digits++;
+    
+    int i = 0;
+    while (i < num && (codes[i] == '#' || codes[i] == '?'))
+        i++;
+    
+    if (i == num && codes[i] != '#')
+    {
+        if (codes[i] != ' ')
+            i++;
+        result += matches1(codes + i, next_digits);
+    }
+    if (codes[0] != '#')
+        result += matches1(codes + 1, digits);
+    return result;
+}    
 ```
 
 At 9:43, I found the bug. Lets try it on the input.
@@ -135,8 +135,8 @@ I took a break till 11:04.
 ```c
 int main(int argc, char *argv[])
 {
-	...
-	solve2();
+    ...
+    solve2();
 }
 
 char *codes;
@@ -146,59 +146,59 @@ int nr_digits;
 
 void solve2()
 {
-	num_t sum = 0;
-	int max_nr_codes = 0;
-	int max_nr_digits = 0;
-	for (int l = 0; l < nr_lines; l++)
-	{
-		codes = lines[l];
-		nr_codes = strchr(codes, ' ') - codes;
-		s_digits = codes + nr_codes + 1;
-		nr_digits = 1;
-		for (char *s = s_digits; *s != '\0'; s++)
-			if (*s == ',')
-				nr_digits++;
+    num_t sum = 0;
+    int max_nr_codes = 0;
+    int max_nr_digits = 0;
+    for (int l = 0; l < nr_lines; l++)
+    {
+        codes = lines[l];
+        nr_codes = strchr(codes, ' ') - codes;
+        s_digits = codes + nr_codes + 1;
+        nr_digits = 1;
+        for (char *s = s_digits; *s != '\0'; s++)
+            if (*s == ',')
+                nr_digits++;
 
-		if (nr_codes > max_nr_codes) max_nr_codes = nr_codes;
-		if (nr_digits > max_nr_digits) max_nr_digits = nr_digits;				
-		sum += matches2(0, s_digits, 0);
-	}
-	printf("%d %d ", max_nr_codes, max_nr_digits);
-	printf("%lld\n", sum);
+        if (nr_codes > max_nr_codes) max_nr_codes = nr_codes;
+        if (nr_digits > max_nr_digits) max_nr_digits = nr_digits;                
+        sum += matches2(0, s_digits, 0);
+    }
+    printf("%d %d ", max_nr_codes, max_nr_digits);
+    printf("%lld\n", sum);
 }
 
 num_t matches2(int c, char *digits, int d)
 {
-	if (*digits == '\0')
-		while (codes[c] == '.' || codes[c] == '?')
-			c++;
-	
-	if (codes[c] == ' ' && *digits == '\0')
-		return 1;
-	
-	if (codes[c] == ' ' || *digits == '\0')
-		return 0;
+    if (*digits == '\0')
+        while (codes[c] == '.' || codes[c] == '?')
+            c++;
+    
+    if (codes[c] == ' ' && *digits == '\0')
+        return 1;
+    
+    if (codes[c] == ' ' || *digits == '\0')
+        return 0;
 
-	num_t result = 0;
-		
-	char *next_digits = digits;
-	num_t num = parse_number(&next_digits);
-	if (*next_digits == ',') next_digits++;
-	
-	int i = 0;
-	while (i < num && (codes[c + i] == '#' || codes[c + i] == '?'))
-		i++;
+    num_t result = 0;
+        
+    char *next_digits = digits;
+    num_t num = parse_number(&next_digits);
+    if (*next_digits == ',') next_digits++;
+    
+    int i = 0;
+    while (i < num && (codes[c + i] == '#' || codes[c + i] == '?'))
+        i++;
 
-	if (i == num && codes[c + i] != '#')
-	{
-		if (codes[c + i] != ' ')
-			i++;
-		result += matches2(c + i, next_digits, d + 1);
-	}
-	if (codes[c] != '#')
-		result += matches2(c + 1, digits, d);
-	return result;
-}	
+    if (i == num && codes[c + i] != '#')
+    {
+        if (codes[c + i] != ' ')
+            i++;
+        result += matches2(c + i, next_digits, d + 1);
+    }
+    if (codes[c] != '#')
+        result += matches2(c + 1, digits, d);
+    return result;
+}    
 ```
 
 At 11:27, the above code gave the same result. Now we have to modify
@@ -214,84 +214,84 @@ int tot_nr_digits;
 
 void solve2()
 {
-	num_t sum = 0;
-	for (int l = 0; l < nr_lines; l++)
-	{
-		codes = lines[l];
-		nr_codes = strchr(codes, ' ') - codes;
-		s_digits = codes + nr_codes + 1;
-		nr_digits = 1;
-		for (char *s = s_digits; *s != '\0'; s++)
-			if (*s == ',')
-				nr_digits++;
-		
-		for (int c = 0; c < 120; c++)
-			for (int d = 0; d < 31; d++)
-				memo[c][d] = -1;
-				
-		tot_nr_codes = 5 * nr_codes;
-		tot_nr_digits = 5 * nr_digits;
-		printf("%s %d %d: ", lines[l], tot_nr_codes, tot_nr_digits);
+    num_t sum = 0;
+    for (int l = 0; l < nr_lines; l++)
+    {
+        codes = lines[l];
+        nr_codes = strchr(codes, ' ') - codes;
+        s_digits = codes + nr_codes + 1;
+        nr_digits = 1;
+        for (char *s = s_digits; *s != '\0'; s++)
+            if (*s == ',')
+                nr_digits++;
+        
+        for (int c = 0; c < 120; c++)
+            for (int d = 0; d < 31; d++)
+                memo[c][d] = -1;
+                
+        tot_nr_codes = 5 * nr_codes;
+        tot_nr_digits = 5 * nr_digits;
+        printf("%s %d %d: ", lines[l], tot_nr_codes, tot_nr_digits);
 
-		num_t result = matches2(0, 0, 0);
-		printf("%lld\n", result);
-		sum += result;
-	}
-	printf("%lld\n", sum);
+        num_t result = matches2(0, 0, 0);
+        printf("%lld\n", result);
+        sum += result;
+    }
+    printf("%lld\n", sum);
 }
 
 num_t matches2(int c, char *digits, int d)
 {
-	if (memo[c][d] != -1)
-		return memo[c][d];
-	int s_c = c;
+    if (memo[c][d] != -1)
+        return memo[c][d];
+    int s_c = c;
 
-	if (d == tot_nr_digits)
-		while (c < tot_nr_codes && (codes[c % nr_codes] == '.' || codes[c % nr_codes] == '?'))
-			c++;
-	
-	if (c == tot_nr_codes && d == tot_nr_digits)
-	{
-		memo[s_c][d] = 1;
-		printf("Match %d %d => 1\n", s_c, d);	
-		return 1;
-	}
-	
-	if (c == tot_nr_codes && d == tot_nr_digits)
-	{
-		memo[s_c][d] = 0;
-		printf("Match %d %d => 0\n", s_c, 0);
-		return 0;
-	}
+    if (d == tot_nr_digits)
+        while (c < tot_nr_codes && (codes[c % nr_codes] == '.' || codes[c % nr_codes] == '?'))
+            c++;
+    
+    if (c == tot_nr_codes && d == tot_nr_digits)
+    {
+        memo[s_c][d] = 1;
+        printf("Match %d %d => 1\n", s_c, d);    
+        return 1;
+    }
+    
+    if (c == tot_nr_codes && d == tot_nr_digits)
+    {
+        memo[s_c][d] = 0;
+        printf("Match %d %d => 0\n", s_c, 0);
+        return 0;
+    }
 
-	num_t result = 0;
-	
-	if (d % nr_digits == 0)
-		digits = s_digits;	
-	char *next_digits = digits;
-	num_t num = parse_number(&next_digits);
-	if (*next_digits == ',') next_digits++;
-	
-	int i = 0;
-	int ci = c;
-	while (i < num && ci < tot_nr_codes && (codes[ci % nr_codes] == '#' || codes[ci % nr_codes] == '?'))
-	{
-		i++;
-		ci++;
-	}
+    num_t result = 0;
+    
+    if (d % nr_digits == 0)
+        digits = s_digits;    
+    char *next_digits = digits;
+    num_t num = parse_number(&next_digits);
+    if (*next_digits == ',') next_digits++;
+    
+    int i = 0;
+    int ci = c;
+    while (i < num && ci < tot_nr_codes && (codes[ci % nr_codes] == '#' || codes[ci % nr_codes] == '?'))
+    {
+        i++;
+        ci++;
+    }
 
-	if (i == num && (ci == tot_nr_codes || codes[ci % nr_codes] != '#'))
-	{
-		if (ci < tot_nr_codes)
-			ci++;
-		result += matches2(ci, next_digits, d + 1);
-	}
-	if (codes[c % nr_codes] != '#' && c < tot_nr_codes)
-		result += matches2(c + 1, digits, d);
-	memo[s_c][d] = result;
-	printf("Match %d %d %lld\n", s_c, d, result);	
-	
-	return result;
+    if (i == num && (ci == tot_nr_codes || codes[ci % nr_codes] != '#'))
+    {
+        if (ci < tot_nr_codes)
+            ci++;
+        result += matches2(ci, next_digits, d + 1);
+    }
+    if (codes[c % nr_codes] != '#' && c < tot_nr_codes)
+        result += matches2(c + 1, digits, d);
+    memo[s_c][d] = result;
+    printf("Match %d %d %lld\n", s_c, d, result);    
+    
+    return result;
 }
 ```
 
@@ -302,94 +302,94 @@ changes it a bit. Lets try again:
 ```c
 void solve2()
 {
-	num_t sum = 0;
-	for (int l = 0; l < nr_lines; l++)
-	{
-		codes = lines[l];
-		nr_codes = strchr(codes, ' ') - codes;
-		s_digits = codes + nr_codes + 1;
-		nr_digits = 1;
-		for (char *s = s_digits; *s != '\0'; s++)
-			if (*s == ',')
-				nr_digits++;
-		
-		for (int c = 0; c < 120; c++)
-			for (int d = 0; d < 31; d++)
-				memo[c][d] = -1;
-				
-		tot_nr_codes = 6 * nr_codes - 1;
-		tot_nr_digits = 5 * nr_digits;
-		printf("%s %d %d: ", lines[l], tot_nr_codes, tot_nr_digits);
+    num_t sum = 0;
+    for (int l = 0; l < nr_lines; l++)
+    {
+        codes = lines[l];
+        nr_codes = strchr(codes, ' ') - codes;
+        s_digits = codes + nr_codes + 1;
+        nr_digits = 1;
+        for (char *s = s_digits; *s != '\0'; s++)
+            if (*s == ',')
+                nr_digits++;
+        
+        for (int c = 0; c < 120; c++)
+            for (int d = 0; d < 31; d++)
+                memo[c][d] = -1;
+                
+        tot_nr_codes = 6 * nr_codes - 1;
+        tot_nr_digits = 5 * nr_digits;
+        printf("%s %d %d: ", lines[l], tot_nr_codes, tot_nr_digits);
 
-		num_t result = matches2(0, 0, 0);
-		printf("%lld\n", result);
-		sum += result;
-	}
-	printf("%lld\n", sum);
+        num_t result = matches2(0, 0, 0);
+        printf("%lld\n", result);
+        sum += result;
+    }
+    printf("%lld\n", sum);
 }
 
 char code_for(int i)
 {
-	i = i % (nr_codes + 1);
-	return i == nr_codes ? '?' : codes[i];
+    i = i % (nr_codes + 1);
+    return i == nr_codes ? '?' : codes[i];
 }
 
 num_t matches2(int c, char *digits, int d)
 {
-	if (memo[c][d] != -1)
-		return memo[c][d];
-	int s_c = c;
+    if (memo[c][d] != -1)
+        return memo[c][d];
+    int s_c = c;
 
-	if (d == tot_nr_digits)
-		while (c < tot_nr_codes && (code_for(c) != '#'))
-			c++;
-	
-	if (c == tot_nr_codes && d == tot_nr_digits)
-	{
-		memo[s_c][d] = 1;
-		printf("%*.*sMatch %d %d => 1\n", s_c + d, s_c + d, "", s_c, d);	
-		return 1;
-	}
-	
-	if (c == tot_nr_codes && d == tot_nr_digits)
-	{
-		memo[s_c][d] = 0;
-		printf("%*.*sMatch %d %d => 0\n", s_c + d, s_c + d, "", s_c, 0);
-		return 0;
-	}
+    if (d == tot_nr_digits)
+        while (c < tot_nr_codes && (code_for(c) != '#'))
+            c++;
+    
+    if (c == tot_nr_codes && d == tot_nr_digits)
+    {
+        memo[s_c][d] = 1;
+        printf("%*.*sMatch %d %d => 1\n", s_c + d, s_c + d, "", s_c, d);    
+        return 1;
+    }
+    
+    if (c == tot_nr_codes && d == tot_nr_digits)
+    {
+        memo[s_c][d] = 0;
+        printf("%*.*sMatch %d %d => 0\n", s_c + d, s_c + d, "", s_c, 0);
+        return 0;
+    }
 
-	num_t result = 0;
-	
-	if (d % nr_digits == 0)
-		digits = s_digits;	
-	char *next_digits = digits;
-	num_t num = parse_number(&next_digits);
-	if (*next_digits == ',') next_digits++;
-	
-	printf("%*.*sc = %d %c\n", s_c + d, s_c + d, "", c, code_for(c));
-	if (code_for(c) != '#' && c < tot_nr_codes)
-		result += matches2(c + 1, digits, d);
+    num_t result = 0;
+    
+    if (d % nr_digits == 0)
+        digits = s_digits;    
+    char *next_digits = digits;
+    num_t num = parse_number(&next_digits);
+    if (*next_digits == ',') next_digits++;
+    
+    printf("%*.*sc = %d %c\n", s_c + d, s_c + d, "", c, code_for(c));
+    if (code_for(c) != '#' && c < tot_nr_codes)
+        result += matches2(c + 1, digits, d);
 
-	int i = 0;
-	int ci = c;
-	while (i < num && ci < tot_nr_codes && (code_for(ci) != '.'))
-	{
-		i++;
-		ci++;
-	}
-	printf("%*.*si = %d ci = %d %c\n", s_c + d, s_c + d, "", i, ci, code_for(ci));
+    int i = 0;
+    int ci = c;
+    while (i < num && ci < tot_nr_codes && (code_for(ci) != '.'))
+    {
+        i++;
+        ci++;
+    }
+    printf("%*.*si = %d ci = %d %c\n", s_c + d, s_c + d, "", i, ci, code_for(ci));
 
-	if (i == num && (ci == tot_nr_codes || code_for(ci) != '#'))
-	{
-		if (ci < tot_nr_codes)
-			ci++;
-		result += matches2(ci, next_digits, d + 1);
-	}
+    if (i == num && (ci == tot_nr_codes || code_for(ci) != '#'))
+    {
+        if (ci < tot_nr_codes)
+            ci++;
+        result += matches2(ci, next_digits, d + 1);
+    }
 
-	memo[s_c][d] = result;
-	printf("%*.*sMatch %d %d %lld\n", s_c + d, s_c + d, "", s_c, d, result);	
-	
-	return result;
+    memo[s_c][d] = result;
+    printf("%*.*sMatch %d %d %lld\n", s_c + d, s_c + d, "", s_c, d, result);    
+    
+    return result;
 }
 ```
 
@@ -400,81 +400,81 @@ At 21:09, I continued, with the code below:
 ```c
 void solve2()
 {
-	num_t sum = 0;
-	for (int l = 0; l < nr_lines; l++)
-	{
-		codes = lines[l];
-		nr_codes = strchr(codes, ' ') - codes;
-		s_digits = codes + nr_codes + 1;
-		nr_digits = 1;
-		for (char *s = s_digits; *s != '\0'; s++)
-			if (*s == ',')
-				nr_digits++;
-		
-		for (int c = 0; c < 120; c++)
-			for (int d = 0; d < 31; d++)
-				memo[c][d] = -1;
-				
-		tot_nr_codes = 5 * nr_codes + 4;
-		tot_nr_digits = 5 * nr_digits;
+    num_t sum = 0;
+    for (int l = 0; l < nr_lines; l++)
+    {
+        codes = lines[l];
+        nr_codes = strchr(codes, ' ') - codes;
+        s_digits = codes + nr_codes + 1;
+        nr_digits = 1;
+        for (char *s = s_digits; *s != '\0'; s++)
+            if (*s == ',')
+                nr_digits++;
+        
+        for (int c = 0; c < 120; c++)
+            for (int d = 0; d < 31; d++)
+                memo[c][d] = -1;
+                
+        tot_nr_codes = 5 * nr_codes + 4;
+        tot_nr_digits = 5 * nr_digits;
 
-		num_t result = matches2(0, 0, 0);
-		sum += result;
-	}
-	printf("%lld\n", sum);
+        num_t result = matches2(0, 0, 0);
+        sum += result;
+    }
+    printf("%lld\n", sum);
 }
 
 num_t matches2(int c, char *digits, int d)
 {
-	if (memo[c][d] != -1)
-		return memo[c][d];
-	int s_c = c;
+    if (memo[c][d] != -1)
+        return memo[c][d];
+    int s_c = c;
 
-	if (d == tot_nr_digits)
-		while (c < tot_nr_codes && (code_for(c) != '#'))
-			c++;
-	
-	if (c == tot_nr_codes && d == tot_nr_digits)
-	{
-		memo[s_c][d] = 1;
-		return 1;
-	}
-	
-	if (c == tot_nr_codes && d == tot_nr_digits)
-	{
-		memo[s_c][d] = 0;
-		return 0;
-	}
+    if (d == tot_nr_digits)
+        while (c < tot_nr_codes && (code_for(c) != '#'))
+            c++;
+    
+    if (c == tot_nr_codes && d == tot_nr_digits)
+    {
+        memo[s_c][d] = 1;
+        return 1;
+    }
+    
+    if (c == tot_nr_codes && d == tot_nr_digits)
+    {
+        memo[s_c][d] = 0;
+        return 0;
+    }
 
-	num_t result = 0;
-	
-	if (d % nr_digits == 0)
-		digits = s_digits;	
-	char *next_digits = digits;
-	num_t num = parse_number(&next_digits);
-	if (*next_digits == ',') next_digits++;
-	
-	if (code_for(c) != '#' && c < tot_nr_codes)
-		result += matches2(c + 1, digits, d);
+    num_t result = 0;
+    
+    if (d % nr_digits == 0)
+        digits = s_digits;    
+    char *next_digits = digits;
+    num_t num = parse_number(&next_digits);
+    if (*next_digits == ',') next_digits++;
+    
+    if (code_for(c) != '#' && c < tot_nr_codes)
+        result += matches2(c + 1, digits, d);
 
-	int i = 0;
-	int ci = c;
-	while (i < num && ci < tot_nr_codes && (code_for(ci) != '.'))
-	{
-		i++;
-		ci++;
-	}
+    int i = 0;
+    int ci = c;
+    while (i < num && ci < tot_nr_codes && (code_for(ci) != '.'))
+    {
+        i++;
+        ci++;
+    }
 
-	if (i == num && (ci == tot_nr_codes || code_for(ci) != '#'))
-	{
-		if (ci < tot_nr_codes)
-			ci++;
-		result += matches2(ci, next_digits, d + 1);
-	}
+    if (i == num && (ci == tot_nr_codes || code_for(ci) != '#'))
+    {
+        if (ci < tot_nr_codes)
+            ci++;
+        result += matches2(ci, next_digits, d + 1);
+    }
 
-	memo[s_c][d] = result;
-	
-	return result;
+    memo[s_c][d] = result;
+    
+    return result;
 }
 ```
 
@@ -490,37 +490,37 @@ the second part.
 ```c
 int main(int argc, char *argv[])
 {
-	...
-	solve2b();
+    ...
+    solve2b();
 }
 
 void solve2b()
 {
-	num_t sum = 0;
-	for (int l = 0; l < nr_lines; l++)
-	{
-		char codes[120];
-		int digits[40];
-		char *s = lines[l];
-		int i = 0;
-		for (; s[i] != ' '; i++)
-			codes[i] = s[i];
-		codes[i] = ' ';
-		int d = 0;
-		s = s + i + 1;
-		for (;;)
-		{
-			digits[d++] = parse_number(&s);
-			if (*s != ',')
-				break;
-			s++;
-		}
-		digits[d] = 0;
-		
-		expand(codes, i, digits, d);
-		sum += matches2b(codes, digits);
-	}
-	printf("%lld\n", sum);
+    num_t sum = 0;
+    for (int l = 0; l < nr_lines; l++)
+    {
+        char codes[120];
+        int digits[40];
+        char *s = lines[l];
+        int i = 0;
+        for (; s[i] != ' '; i++)
+            codes[i] = s[i];
+        codes[i] = ' ';
+        int d = 0;
+        s = s + i + 1;
+        for (;;)
+        {
+            digits[d++] = parse_number(&s);
+            if (*s != ',')
+                break;
+            s++;
+        }
+        digits[d] = 0;
+        
+        expand(codes, i, digits, d);
+        sum += matches2b(codes, digits);
+    }
+    printf("%lld\n", sum);
 }
 
 void expand(char *codes, int i, int *digits, int d)
@@ -529,34 +529,34 @@ void expand(char *codes, int i, int *digits, int d)
 
 num_t matches2b(char *codes, int *digits)
 {
-	if (*digits == 0)
-		while (*codes == '.' || *codes == '?')
-			codes++;
-	
-	if (*codes == ' ' && *digits == 0)
-	{
-		return 1;
-	}
-	
-	if (*codes == ' ' || *digits == 0)
-	{	
-		return 0;
-	}
-	num_t result = 0;
-		
-	int i = 0;
-	while (i < *digits && (codes[i] == '#' || codes[i] == '?'))
-		i++;
-	
-	if (i == *digits && codes[i] != '#')
-	{
-		if (codes[i] != ' ')
-			i++;
-		result += matches2b(codes + i, digits + 1);
-	}
-	if (codes[0] != '#')
-		result += matches2b(codes + 1, digits);
-	return result;
+    if (*digits == 0)
+        while (*codes == '.' || *codes == '?')
+            codes++;
+    
+    if (*codes == ' ' && *digits == 0)
+    {
+        return 1;
+    }
+    
+    if (*codes == ' ' || *digits == 0)
+    {    
+        return 0;
+    }
+    num_t result = 0;
+        
+    int i = 0;
+    while (i < *digits && (codes[i] == '#' || codes[i] == '?'))
+        i++;
+    
+    if (i == *digits && codes[i] != '#')
+    {
+        if (codes[i] != ' ')
+            i++;
+        result += matches2b(codes + i, digits + 1);
+    }
+    if (codes[0] != '#')
+        result += matches2b(codes + 1, digits);
+    return result;
 }
 
 ```
@@ -570,74 +570,74 @@ int m_digits[40];
 
 void solve2b()
 {
-	num_t sum = 0;
-	for (int l = 0; l < nr_lines; l++)
-	{
-		char *s = lines[l];
-		int i = 0;
-		for (; s[i] != ' '; i++)
-			m_codes[i] = s[i];
-		m_codes[i] = ' ';
-		int d = 0;
-		s = s + i + 1;
-		for (;;)
-		{
-			m_digits[d++] = parse_number(&s);
-			if (*s != ',')
-				break;
-			s++;
-		}
-		m_digits[d] = 0;
-		
-		expand(m_codes, i, m_digits, d);
+    num_t sum = 0;
+    for (int l = 0; l < nr_lines; l++)
+    {
+        char *s = lines[l];
+        int i = 0;
+        for (; s[i] != ' '; i++)
+            m_codes[i] = s[i];
+        m_codes[i] = ' ';
+        int d = 0;
+        s = s + i + 1;
+        for (;;)
+        {
+            m_digits[d++] = parse_number(&s);
+            if (*s != ',')
+                break;
+            s++;
+        }
+        m_digits[d] = 0;
+        
+        expand(m_codes, i, m_digits, d);
 
-		for (int c = 0; c < 120; c++)
-			for (int d = 0; d < 31; d++)
-				memo[c][d] = -1;
+        for (int c = 0; c < 120; c++)
+            for (int d = 0; d < 31; d++)
+                memo[c][d] = -1;
 
-		sum += matches2b(m_codes, m_digits);
-	}
-	printf("%lld\n", sum);
+        sum += matches2b(m_codes, m_digits);
+    }
+    printf("%lld\n", sum);
 }
 
 num_t matches2b(char *codes, int *digits)
 {
-	if (*digits == 0)
-		while (*codes == '.' || *codes == '?')
-			codes++;
-	
-	if (*codes == ' ' && *digits == 0)
-	{
-		return 1;
-	}
-	
-	if (*codes == ' ' || *digits == 0)
-	{	
-		return 0;
-	}
-	
-	num_t *m = &memo[codes - m_codes][digits - m_digits];
-	if (*m != -1)
-		return *m;
-		
-	num_t result = 0;
-		
-	int i = 0;
-	while (i < *digits && (codes[i] == '#' || codes[i] == '?'))
-		i++;
-	
-	if (i == *digits && codes[i] != '#')
-	{
-		if (codes[i] != ' ')
-			i++;
-		result += matches2b(codes + i, digits + 1);
-	}
-	if (codes[0] != '#')
-		result += matches2b(codes + 1, digits);
-		
-	*m = result;
-	
-	return result;
+    if (*digits == 0)
+        while (*codes == '.' || *codes == '?')
+            codes++;
+    
+    if (*codes == ' ' && *digits == 0)
+    {
+        return 1;
+    }
+    
+    if (*codes == ' ' || *digits == 0)
+    {    
+        return 0;
+    }
+    
+    num_t *m = &memo[codes - m_codes][digits - m_digits];
+    if (*m != -1)
+        return *m;
+        
+    num_t result = 0;
+        
+    int i = 0;
+    while (i < *digits && (codes[i] == '#' || codes[i] == '?'))
+        i++;
+    
+    if (i == *digits && codes[i] != '#')
+    {
+        if (codes[i] != ' ')
+            i++;
+        result += matches2b(codes + i, digits + 1);
+    }
+    if (codes[0] != '#')
+        result += matches2b(codes + 1, digits);
+        
+    *m = result;
+    
+    return result;
 }
 
 ```
@@ -648,24 +648,24 @@ the `expand` method.
 ```c
 void expand(char *codes, int i, int *digits, int d)
 {
-	char *s = codes + i;
-	for (int t = 0; t < 4; t++)
-	{
-		*s++ = '?';
-		for (int j = 0; j < i; j++)
-		{
-			*s++ = codes[j];
-			digits[d * t + j] = digits[j];
-		}
-	}
-	*s = ' ';
-	digits[d * 5] = 0;
+    char *s = codes + i;
+    for (int t = 0; t < 4; t++)
+    {
+        *s++ = '?';
+        for (int j = 0; j < i; j++)
+        {
+            *s++ = codes[j];
+            digits[d * t + j] = digits[j];
+        }
+    }
+    *s = ' ';
+    digits[d * 5] = 0;
 }
 ```
 
 Now it returns the answer for the second part of the puzzle.
 
-	
+    
 ### Executing this page
 
 The command I use to process this markdown file, is:

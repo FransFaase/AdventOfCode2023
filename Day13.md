@@ -9,31 +9,31 @@ dive in.
 ```c
 int main(int argc, char *argv[])
 {
-	read_file("input/day13.txt");
-	int i = 0;
-	while (i < nr_lines)
-	{
-		char **rect = lines + i;
-		int nr_cols = strlen(rect[0]);
-		int nr_rows = 0;
-		for (; i < nr_lines && lines[i][0] != '\0'; i++)
-			nr_rows++;
-		if (i < nr_lines)
-			i++;
-		process(rect, nr_rows, nr_cols);
-	}
+    read_file("input/day13.txt");
+    int i = 0;
+    while (i < nr_lines)
+    {
+        char **rect = lines + i;
+        int nr_cols = strlen(rect[0]);
+        int nr_rows = 0;
+        for (; i < nr_lines && lines[i][0] != '\0'; i++)
+            nr_rows++;
+        if (i < nr_lines)
+            i++;
+        process(rect, nr_rows, nr_cols);
+    }
 }
 
 void process(char **rect, int nr_rows, int nr_cols)
 {
-	solve1(rect, nr_rows, nr_cols);
+    solve1(rect, nr_rows, nr_cols);
 }
 
 void solve1(char **rect, int nr_rows, int nr_cols)
 {
-	for (int i = 0; i < nr_rows; i++)
-		printf("%s\n", rect[i]);
-	printf("\n");
+    for (int i = 0; i < nr_rows; i++)
+        printf("%s\n", rect[i]);
+    printf("\n");
 }
 ```
 
@@ -45,42 +45,42 @@ num_t answer1 = 0;
 
 int main(int argc, char *argv[])
 {
-	...
-	printf("%lld\n", answer1);
+    ...
+    printf("%lld\n", answer1);
 }
 
 void solve1(char **rect, int nr_rows, int nr_cols)
 {
-	for (int j = 0; j < nr_cols - 1; j++)
-	{
-		bool mirror = TRUE;
-		for (int j2 = 0; j2 <= j && j + 1 + j2 < nr_cols && mirror; j2++)
-			for (int i = 0; i < nr_rows && mirror; i++)
-				mirror = rect[i][j - j2] == rect[i][j + 1 + j2];
-		
-		if (mirror)
-		{
-			printf("nr_col %d\n", j + 1);
-			answer1 += j + 1;
-			return;
-		}
-	}
+    for (int j = 0; j < nr_cols - 1; j++)
+    {
+        bool mirror = TRUE;
+        for (int j2 = 0; j2 <= j && j + 1 + j2 < nr_cols && mirror; j2++)
+            for (int i = 0; i < nr_rows && mirror; i++)
+                mirror = rect[i][j - j2] == rect[i][j + 1 + j2];
+        
+        if (mirror)
+        {
+            printf("nr_col %d\n", j + 1);
+            answer1 += j + 1;
+            return;
+        }
+    }
 
-	for (int i = 0; i < nr_rows - 1; i++)
-	{
-		bool mirror = TRUE;
-		for (int i2 = 0; i2 <= i && i + 1 + i2 < nr_rows && mirror; i2++)
-			for (int j = 0; j < nr_cols && mirror; j++)
-				mirror = rect[i - i2][j] == rect[i + 1 + i2][j];
-		
-		if (mirror)
-		{
-			printf("nr_row %d\n", i + 1);
-			answer1 += 100 * (i + 1);
-			return;
-		}
-	}
-	printf("None\n");
+    for (int i = 0; i < nr_rows - 1; i++)
+    {
+        bool mirror = TRUE;
+        for (int i2 = 0; i2 <= i && i + 1 + i2 < nr_rows && mirror; i2++)
+            for (int j = 0; j < nr_cols && mirror; j++)
+                mirror = rect[i - i2][j] == rect[i + 1 + i2][j];
+        
+        if (mirror)
+        {
+            printf("nr_row %d\n", i + 1);
+            answer1 += 100 * (i + 1);
+            return;
+        }
+    }
+    printf("None\n");
 }
 ```
 
@@ -100,50 +100,50 @@ num_t answer2 = 0;
 
 int main(int argc, char *argv[])
 {
-	...
-	printf("%lld\n", answer2);
+    ...
+    printf("%lld\n", answer2);
 }
 
 void process(char **rect, int nr_rows, int nr_cols)
 {
     ...
-	solve2(rect, nr_rows, nr_cols);
+    solve2(rect, nr_rows, nr_cols);
 }
 
 void solve2(char **rect, int nr_rows, int nr_cols)
 {
-	for (int j = 0; j < nr_cols - 1; j++)
-	{
-		int nr_smudge = 0;
-		for (int j2 = 0; j2 <= j && j + 1 + j2 < nr_cols; j2++)
-			for (int i = 0; i < nr_rows; i++)
-				if (rect[i][j - j2] != rect[i][j + 1 + j2])
-					nr_smudge++;
-		
-		if (nr_smudge == 1)
-		{
-			printf("nr_col %d\n", j + 1);
-			answer2 += j + 1;
-			return;
-		}
-	}
+    for (int j = 0; j < nr_cols - 1; j++)
+    {
+        int nr_smudge = 0;
+        for (int j2 = 0; j2 <= j && j + 1 + j2 < nr_cols; j2++)
+            for (int i = 0; i < nr_rows; i++)
+                if (rect[i][j - j2] != rect[i][j + 1 + j2])
+                    nr_smudge++;
+        
+        if (nr_smudge == 1)
+        {
+            printf("nr_col %d\n", j + 1);
+            answer2 += j + 1;
+            return;
+        }
+    }
 
-	for (int i = 0; i < nr_rows - 1; i++)
-	{
-		int nr_smudge = 0;
-		for (int i2 = 0; i2 <= i && i + 1 + i2 < nr_rows; i2++)
-			for (int j = 0; j < nr_cols; j++)
-				if (rect[i - i2][j] != rect[i + 1 + i2][j])
-					nr_smudge++;
-		
-		if (nr_smudge == 1)
-		{
-			printf("nr_row %d\n", i + 1);
-			answer2 += 100 * (i + 1);
-			return;
-		}
-	}
-	printf("None\n");
+    for (int i = 0; i < nr_rows - 1; i++)
+    {
+        int nr_smudge = 0;
+        for (int i2 = 0; i2 <= i && i + 1 + i2 < nr_rows; i2++)
+            for (int j = 0; j < nr_cols; j++)
+                if (rect[i - i2][j] != rect[i + 1 + i2][j])
+                    nr_smudge++;
+        
+        if (nr_smudge == 1)
+        {
+            printf("nr_row %d\n", i + 1);
+            answer2 += 100 * (i + 1);
+            return;
+        }
+    }
+    printf("None\n");
 }
 ```
 
@@ -151,7 +151,7 @@ At 7:46, the above code returned the correct answer after fixing
 two minor errors, namely, forgot to remove some `mirror` occurances
 in the conditions of the for loops and summed to `answer1` instead
 of `answer2`.
-	
+    
 ### Executing this page
 
 The command I use to process this markdown file, is:

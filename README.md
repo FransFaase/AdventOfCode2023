@@ -111,12 +111,20 @@ in the evening did I find the solution for the second part.
 
 See further [Day 12](Day12.md).
 
-### Wednesday, December 12, 2022
+### Wednesday, December 13, 2022
 
 I started reading the puzzle around 7:05 and finished both
 parts at 7:46 without many problems.
 
-See further [Day 12](Day12.md).
+See further [Day 13](Day13.md).
+
+### Thursday, December 14, 2022
+
+I started reading the puzzle around 7:35 and finished the
+first half in one try at 8:18. Then I had to leave and it
+was only in the evening, that I finished the second part.
+
+See further [Day 14](Day14.md).
 
 ### Personal stats
 
@@ -124,6 +132,7 @@ See further [Day 12](Day12.md).
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 14   02:18:19   9850      0   17:06:55  20761      0
  13   01:36:36   6324      0   01:46:23   4698      0
  12   03:44:33  10192      0   15:16:40  11981      0
  11   02:26:42  11269      0   03:04:52  11201      0
