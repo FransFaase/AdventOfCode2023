@@ -54,8 +54,8 @@ void read_file(const char *name)
         
         while (*s != '\n')
         {
-        	if (*s == '\r)
-        		*s = '\0';
+            if (*s == '\r)
+                *s = '\0';
             s++;
         }
         *s++ = '\0';
@@ -71,12 +71,12 @@ bool is_digit(char c) { return '0' <= c && c <= '9'; }
 
 num_t parse_number(char **s)
 {
-	int sign = 1;
-	if (**s == '-')
-	{
-		sign = -1;
-		(*s)++;
-	}
+    int sign = 1;
+    if (**s == '-')
+    {
+        sign = -1;
+        (*s)++;
+    }
     num_t value = 0;
     for (;is_digit(**s); (*s)++)
         value = 10 * value + **s - '0';

@@ -126,12 +126,22 @@ was only in the evening, that I finished the second part.
 
 See further [Day 14](Day14.md).
 
+### Friday, December 14, 2022
+
+I woke up at 5:53 and decided to get up at 5:57. I opened
+my laptop at 6:01 and started reading the text. I solved both
+parts of the puzzle at 6:37 with only having to fix some syntax
+errors.
+
+See further [Day 15](Day15.md).
+
 ### Personal stats
 
 
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 15   00:11:14   3926      0   00:37:12   3044      0
  14   02:18:19   9850      0   17:06:55  20761      0
  13   01:36:36   6324      0   01:46:23   4698      0
  12   03:44:33  10192      0   15:16:40  11981      0
