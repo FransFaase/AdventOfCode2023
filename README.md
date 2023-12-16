@@ -126,7 +126,7 @@ was only in the evening, that I finished the second part.
 
 See further [Day 14](Day14.md).
 
-### Friday, December 14, 2022
+### Friday, December 15, 2022
 
 I woke up at 5:53 and decided to get up at 5:57. I opened
 my laptop at 6:01 and started reading the text. I solved both
@@ -135,12 +135,21 @@ errors.
 
 See further [Day 15](Day15.md).
 
+### Saturday, December 16, 2022
+
+At 9:55, I had a quick look at the puzzle. It was only
+at 14:47, that I started working on the puzzle. I found
+both answers without much problems at 15:33 and 16:04.
+
+See further [Day 16](Day16.md).
+
 ### Personal stats
 
 
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 16   09:33:33  16276      0   10:04:58  15593      0
  15   00:11:14   3926      0   00:37:12   3044      0
  14   02:18:19   9850      0   17:06:55  20761      0
  13   01:36:36   6324      0   01:46:23   4698      0
