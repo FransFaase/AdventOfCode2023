@@ -152,12 +152,20 @@ relatively easy to find.
 
 See further [Day 17](Day17.md).
 
+### Monday, December 18, 2022
+
+I only started working at this at 13:54 and found both answers
+at 14:32.
+
+See further [Day 18](Day18.md).
+
 ### Personal stats
 
 
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 18   08:19:05  12570      0   08:32:59   7839      0
  17   01:03:17   1578      0   01:08:20   1269      0
  16   09:33:33  16276      0   10:04:58  15593      0
  15   00:11:14   3926      0   00:37:12   3044      0
