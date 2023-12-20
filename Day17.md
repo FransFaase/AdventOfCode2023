@@ -296,7 +296,7 @@ void solve2()
 
 At 7:08, I found the correct answer with the above code.
 
-### Prologg
+### Epilogue
 
 I wonder if there are more than is more than one shortes solution or whether there
 are more. Lets adjust the above code to cound these.
@@ -308,11 +308,11 @@ num_t nr_vert[SIZE][SIZE];
 
 num_t find_horz(int i, int j)
 {
-	if (nr_horz[i][j] > 0)
-		return nr_horz[i][j];
+    if (nr_horz[i][j] > 0)
+        return nr_horz[i][j];
 
-	num_t nr = 0;
-		
+    num_t nr = 0;
+        
     int sum = lines[i][j] - '0';
     for (int s = 1; s <= 10 && j - s >= 0; s++)
     {
@@ -331,18 +331,18 @@ num_t find_horz(int i, int j)
         sum += lines[i][j + s] - '0';
     }
     
-	nr_horz[i][j] = nr;
-	printf("find_horz(%d, %d) = %lld\n", i, j, nr);
-	
-	return nr;
+    nr_horz[i][j] = nr;
+    printf("find_horz(%d, %d) = %lld\n", i, j, nr);
+    
+    return nr;
 }
 
 num_t find_vert(int i, int j)
 {
-	if (nr_vert[i][j] > 0)
-		return nr_vert[i][j];
-	
-	num_t nr = 0;
+    if (nr_vert[i][j] > 0)
+        return nr_vert[i][j];
+    
+    num_t nr = 0;
 
     int sum = lines[i][j] - '0';
     for (int s = 1; s <= 10 && i - s >= 0; s++)
@@ -361,38 +361,38 @@ num_t find_vert(int i, int j)
 
         sum += lines[i + s][j] - '0';
     }
-	
-	nr_vert[i][j] = nr;
-	printf("find_vert(%d, %d) = %lld\n", i, j, nr);
-	
-	return nr;
+    
+    nr_vert[i][j] = nr;
+    printf("find_vert(%d, %d) = %lld\n", i, j, nr);
+    
+    return nr;
 }
 
 void solve2()
 {
-	...
-	
+    ...
+    
     for (int i = 0; i < SIZE; i++)
         for (int j = 0; j < SIZE; j++)
         {
-        	nr_horz[i][j] = 0;
-        	nr_vert[i][j] = 0;
+            nr_horz[i][j] = 0;
+            nr_vert[i][j] = 0;
         }
     nr_horz[0][0] = 1;
     nr_vert[0][0] = 1;
 
-	num_t answer = horz[SIZE-1][SIZE-1] < vert[SIZE-1][SIZE-1] ? horz[SIZE-1][SIZE-1] : vert[SIZE-1][SIZE-1];
-	
-	num_t nr_sol = 0;
-	if (answer == horz[SIZE-1][SIZE-1])
-		nr_sol += find_horz(SIZE-1, SIZE-1);
-	if (answer == vert[SIZE-1][SIZE-1])
-		nr_sol += find_vert(SIZE-1, SIZE-1);
-	printf("%lld\n", nr_sol);
+    num_t answer = horz[SIZE-1][SIZE-1] < vert[SIZE-1][SIZE-1] ? horz[SIZE-1][SIZE-1] : vert[SIZE-1][SIZE-1];
+    
+    num_t nr_sol = 0;
+    if (answer == horz[SIZE-1][SIZE-1])
+        nr_sol += find_horz(SIZE-1, SIZE-1);
+    if (answer == vert[SIZE-1][SIZE-1])
+        nr_sol += find_vert(SIZE-1, SIZE-1);
+    printf("%lld\n", nr_sol);
 }
 ```
 
-For my puzzle input, it seems there are eight smallest paths.
+For my puzzle input, it seems there are eight shortest paths.
 
 
 ### Executing this page

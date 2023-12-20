@@ -481,7 +481,7 @@ num_t matches2(int c, char *digits, int d)
 The bug was that I had calculated the length of the 'codes' wrong.
 At 21:16, I found the correct answer with the code above.
 
-### Prolog
+### Epilogue
 
 I wonder if it would not have been better, if I had simply copied the
 codes and the numbers five times and adjusted the existing function for

@@ -159,12 +159,21 @@ at 14:32.
 
 See further [Day 18](Day18.md).
 
+### Tuesday, December 19, 2022
+
+I started working a bit at 10:44 but then got busy with a lot
+of other things and only continues at 1:12, December 20 to
+find both solutions at 2:48.
+
+See further [Day 19](Day19.md).
+
 ### Personal stats
 
 
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 19   19:31:15  20599      0   20:48:46  14025      0
  18   08:19:05  12570      0   08:32:59   7839      0
  17   01:03:17   1578      0   01:08:20   1269      0
  16   09:33:33  16276      0   10:04:58  15593      0

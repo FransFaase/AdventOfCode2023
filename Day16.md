@@ -256,7 +256,7 @@ void solve2()
 At 16:04, I found the correct answer for the second half of todays
 puzzle.
 
-### Prolog
+### Epilogue
 
 A bit faster version:
 

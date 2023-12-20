@@ -338,7 +338,7 @@ void solve2()
 At 14:32, the above program returned the correct answer (twice actually).
 So, I guess the formula is correct.
 
-### Prolog
+### Epilogue
 
 When I looked at reddit for [day 10 solutions](https://www.reddit.com/r/adventofcode/comments/18evyu9/2023_day_10_solutions/),
 I noticed that but a few people had used the shoelace algorithm. I also
