@@ -253,3 +253,15 @@ num_t gcd(num_t a, num_t b)
 num_t scm(num_t a, num_t b) { return a * (b / gcd(a, b)); }
 
 ```
+
+### Basic string function
+
+```c
+char *copy_str(char *s)
+{
+	char *r = (char*)malloc(strlen(s) + 1);
+	strcpy(r, s);
+	return r;
+}
+```
+ 

@@ -167,12 +167,25 @@ find both solutions at 2:48.
 
 See further [Day 19](Day19.md).
 
+### Wednesday, December 20, 2022
+
+A worked a bit on this at the beginning of the afternoon,
+but only started working on it around 17:00. At 21:11, I found
+the answer to the first half of the puzzle. At first, I thought that
+the second half was easy, but it turned out that the brute force
+method did not find an answer. After some puzzling and watching a
+film on TV, I implemented some code to find the solution for the
+second part of the puzzle at 2:51, December 21.
+
+See further [Day 20](Day20.md).
+
 ### Personal stats
 
 
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 20   15:11:04  12996      0   20:51:46  11060      0
  19   19:31:15  20599      0   20:48:46  14025      0
  18   08:19:05  12570      0   08:32:59   7839      0
  17   01:03:17   1578      0   01:08:20   1269      0
