@@ -179,12 +179,43 @@ second part of the puzzle at 2:51, December 21.
 
 See further [Day 20](Day20.md).
 
+### Thursday, December 21, 2022
+
+I started reading the puzzle around 11:30 and thought a bit about it.
+I started coding at 11:44 and at submitted the correct answer for
+the first part at 11:56 and did a little bit on the second part.
+I thought about it during the day, but was busy with other things.
+It was only at 23:17 that I continued working on the second half.
+That resulted in working through the night, being anoyed that I could
+not find the right answer. I should have stopped earlier, but I guess
+my pride (finish all puzzles within 24 hours) got the best of me.
+At 5:59, December 22, I got a new idea based on the animation shown
+in [A Diamond in the Rough](https://www.reddit.com/r/adventofcode/comments/18njrqf/2023_day_21_a_diamond_in_the_rough/)
+but I went to sleep before finishing it. At 13:30, I continued working
+on it and figured out a method to calculate the answer. Still required
+me several more tries due to small bugs and one time accidently
+submitting an incorrect previous answer. But finally at 15:24,
+I submitted the last and correct answer. I do not know if I will
+spend time to figure out what was wrong with my earlier implementation.
+
+See further [Day 21](Day21.md).
+
+### Friday, December 22, 2022
+
+At 15:16, I started reading the puzzle description. I wrestled a lot
+with the first part. At 19:20, I found the solution for the first
+part and at 19:54, the solution for the second part.
+
+See further [Day 22](Day22.md).
+
 ### Personal stats
 
 
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 22   13:20:46   9005      0   13:54:07   8045      0
+ 21   05:56:33  10826      0       >24h   9108      0
  20   15:11:04  12996      0   20:51:46  11060      0
  19   19:31:15  20599      0   20:48:46  14025      0
  18   08:19:05  12570      0   08:32:59   7839      0
