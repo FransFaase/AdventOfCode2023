@@ -208,12 +208,27 @@ part and at 19:54, the solution for the second part.
 
 See further [Day 22](Day22.md).
 
+### Saturday, December 23, 2022
+
+I already guessed what would have been the second part of the puzzle
+but still solved the first part building a graph. I did find the solution
+for the second part, but with a bit of luck, because the program kept
+on running quite long. I continued working on it a bit afterwards.
+Implemented a cut-off, which seemed to make find the answer faster,
+but it would still run on much longer. Only when I added some print
+statements, I discovered a bug, which when fixed reduced the running
+time to 60 miliseconds.
+
+See [Day 23](Day22.md).
+
 ### Personal stats
+
 
 
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 23   08:38:46   8226      0   14:28:12   7043      0
  22   13:20:46   9005      0   13:54:07   8045      0
  21   05:56:33  10826      0       >24h   9108      0
  20   15:11:04  12996      0   20:51:46  11060      0
