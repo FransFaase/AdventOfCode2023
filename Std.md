@@ -251,6 +251,8 @@ num_t gcd(num_t a, num_t b)
 }
 
 num_t scm(num_t a, num_t b) { return a * (b / gcd(a, b)); }
+num_t num_t_abs(num_t a) { return a < 0 ? -a : a; }
+int num_t_sign(num_t a) { return a < 0 ? -1 : a > 0 ? 1 : 0; }
 
 ```
 

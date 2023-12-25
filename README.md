@@ -219,15 +219,26 @@ but it would still run on much longer. Only when I added some print
 statements, I discovered a bug, which when fixed reduced the running
 time to 60 miliseconds.
 
-See [Day 23](Day22.md).
+See [Day 23](Day23.md).
+
+### Sunday, December 24, 2022
+
+Spend most of the day working on the first part. Wrote some code for
+big numbers, but although it worked on the example input, it did not work
+for my puzzle input. Finially, got it working using 128 bit integers.
+
+Looked for some time at the second part and wrote lots of equations, but
+did not see a way to find a solution. At 2:24, december 25, I gave up.
+Not sure if I am going to more time on this.
+
+See [Day 24](Day24.md).
 
 ### Personal stats
-
-
 
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
+ 24   17:27:08  10617      0          -      -      -
  23   08:38:46   8226      0   14:28:12   7043      0
  22   13:20:46   9005      0   13:54:07   8045      0
  21   05:56:33  10826      0       >24h   9108      0

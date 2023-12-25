@@ -1,6 +1,6 @@
 # Day 23 of Advent of Code 2023
 
-At 13:10, I started reading the puzzle text. I am not sure how tricky it is.
+At 13:10 (CET), I started reading the puzzle text. I am not sure how tricky it is.
 Because each tile may only be visited once, dead-end cannot be taken. Lets
 see what the input looks like when we eliminate those from the input.
 
