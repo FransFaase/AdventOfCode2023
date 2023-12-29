@@ -1103,42 +1103,42 @@ int main(int argc, char *argv[])
 
 void print128(char *name, __int128 i)
 {
-	char buffer[50];
-	char *s = buffer + 49;
-	*s = '\0';
-	bool negative = FALSE;
-	if (i < 0)
-	{
-		negative = TRUE;
-		i = -i;
-	}
-	while (i != 0)
-	{
-		s--;
-		*s = i % 10 + '0';
-		i /= 10;
-	}
-	if (negative)
-	{
-		s--;
-		*s = '-';
-	}
-	if (*s == '\0')
-	{
-		s--;
-		*s = '0';
-	}
-	printf("%s = %s\n", name, s);
-}	
-	
+    char buffer[50];
+    char *s = buffer + 49;
+    *s = '\0';
+    bool negative = FALSE;
+    if (i < 0)
+    {
+        negative = TRUE;
+        i = -i;
+    }
+    while (i != 0)
+    {
+        s--;
+        *s = i % 10 + '0';
+        i /= 10;
+    }
+    if (negative)
+    {
+        s--;
+        *s = '-';
+    }
+    if (*s == '\0')
+    {
+        s--;
+        *s = '0';
+    }
+    printf("%s = %s\n", name, s);
+}    
+    
 
 void solve2()
 {
-	int range = 100;
+    int range = 100;
 
-	int i = 0;
-	int j = 1;
-		
+    int i = 0;
+    int j = 1;
+        
     __int128 x1 = hailstones[i].x;
     __int128 y1 = hailstones[i].y;
     __int128 z1 = hailstones[i].z;
@@ -1152,50 +1152,50 @@ void solve2()
     __int128 dy2 = hailstones[j].dy;
     __int128 dz2 = hailstones[j].dz;
 
-	__int128 f1xy = (x2-x1)*dy2-(y2-y1)*dx2;
-	__int128 f2xy = dy1*dx2-dx1*dy2;
-	__int128 f1xz = (x2-x1)*dz2-(z2-z1)*dx2;
-	__int128 f2xz = dz1*dx2-dx1*dz2;
+    __int128 f1xy = (x2-x1)*dy2-(y2-y1)*dx2;
+    __int128 f2xy = dy1*dx2-dx1*dy2;
+    __int128 f1xz = (x2-x1)*dz2-(z2-z1)*dx2;
+    __int128 f2xz = dz1*dx2-dx1*dz2;
 
-	print128("f1xy", f1xy);	
-	print128("f1xz", f1xz);	
-	print128("f2xy", f2xy);
-	print128("f2xz", f2xz);	
-	
-	for (int rdxi = -range; rdxi <= range; rdxi++)
-	{
-		__int128 rdx = rdxi;
-		for (int rdyi = -range; rdyi <= range; rdyi++)
-		{
-			__int128 rdy = rdyi;
-			for (int rdzi = -range; rdzi <= range; rdzi++)
-			{
-				__int128 rdz = rdzi;
-				
-				__int128 f3xy = rdy*dx2-rdx*dy2;
-				__int128 f3xz = rdz*dx2-rdx*dz2;
-				//print128(" f2xy", f3xy);
-				//print128(" f3xz", f3xz);
-				__int128 denom = f2xy * f3xz - f2xz * f3xy;
-				__int128 num = f1xz * f3xy - f1xy * f3xz;
-				//print128(" denom  ", denom);
-				//print128("   num  ", num);
-				if (denom != 0 && num % denom == 0)
-				{
-					__int128 div = num / denom;
-					printf("found %d,%d,%d ", rdxi, rdyi, rdzi);
-					print128(" f2xy", f3xy);
-					print128(" f3xz", f3xz);
-					print128(" denom  ", denom);
-					print128("   num  ", num);
-					print128("   div  ", div);
-					
-					// Now check intersection with all other hailstones
-					
-				}
-			}
-		}
-	}
+    print128("f1xy", f1xy);    
+    print128("f1xz", f1xz);    
+    print128("f2xy", f2xy);
+    print128("f2xz", f2xz);    
+    
+    for (int rdxi = -range; rdxi <= range; rdxi++)
+    {
+        __int128 rdx = rdxi;
+        for (int rdyi = -range; rdyi <= range; rdyi++)
+        {
+            __int128 rdy = rdyi;
+            for (int rdzi = -range; rdzi <= range; rdzi++)
+            {
+                __int128 rdz = rdzi;
+                
+                __int128 f3xy = rdy*dx2-rdx*dy2;
+                __int128 f3xz = rdz*dx2-rdx*dz2;
+                //print128(" f2xy", f3xy);
+                //print128(" f3xz", f3xz);
+                __int128 denom = f2xy * f3xz - f2xz * f3xy;
+                __int128 num = f1xz * f3xy - f1xy * f3xz;
+                //print128(" denom  ", denom);
+                //print128("   num  ", num);
+                if (denom != 0 && num % denom == 0)
+                {
+                    __int128 div = num / denom;
+                    printf("found %d,%d,%d ", rdxi, rdyi, rdzi);
+                    print128(" f2xy", f3xy);
+                    print128(" f3xz", f3xz);
+                    print128(" denom  ", denom);
+                    print128("   num  ", num);
+                    print128("   div  ", div);
+                    
+                    // Now check intersection with all other hailstones
+                    
+                }
+            }
+        }
+    }
 }
 ```
 
@@ -1205,7 +1205,7 @@ checking intersections.
 ```
 bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1, __int128 dz1, int i)
 {
-	__int128 x2 = hailstones[i].x;
+    __int128 x2 = hailstones[i].x;
     __int128 y2 = hailstones[i].y;
     __int128 z2 = hailstones[i].z;
     __int128 dz2 = hailstones[i].dz;
@@ -1215,9 +1215,9 @@ bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1
     int _dotsign = dot < 0 ? -1 : dot > 0 ? 1 : 0;
     if (dot == 0)
     {
-	    __int128 z2 = hailstones[i].z;
-	    __int128 dz2 = hailstones[i].dz;
-    	dot = dx1 * dz2 - dx2 * dz1;
+        __int128 z2 = hailstones[i].z;
+        __int128 dz2 = hailstones[i].dz;
+        dot = dx1 * dz2 - dx2 * dz1;
     }
     else
     {
@@ -1253,14 +1253,14 @@ bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1
 
 bool multiple(__int128 a, __int128 b)
 {
-	if (a < 0) a = -a;
-	if (b < 0) b = -b;
-	return a % b == 0;
+    if (a < 0) a = -a;
+    if (b < 0) b = -b;
+    return a % b == 0;
 }
-	
+    
 bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1, __int128 dz1, int i, __int128 *min)
 {
-	__int128 x2 = hailstones[i].x;
+    __int128 x2 = hailstones[i].x;
     __int128 y2 = hailstones[i].y;
     __int128 z2 = hailstones[i].z;
     __int128 dx2 = hailstones[i].dx;
@@ -1272,14 +1272,14 @@ bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1
     const char *dot_name = "dot x-y";
     if (dot == 0)
     {
-    	dot = dx1 * dz2 - dx2 * dz1;
-    	dot_name = "dot x-z";
-    	if (dot == 0)
-    	{
-    		printf("Dot x-z is 0\n");
-    		return FALSE;
-    	}
-    	s_num = dx2 * (z1 - z2) + dz2 * (x2 - x1);
+        dot = dx1 * dz2 - dx2 * dz1;
+        dot_name = "dot x-z";
+        if (dot == 0)
+        {
+            printf("Dot x-z is 0\n");
+            return FALSE;
+        }
+        s_num = dx2 * (z1 - z2) + dz2 * (x2 - x1);
         t_num = dx1 * (z1 - z2) + dz1 * (x2 - x1);
     }
     else
@@ -1290,55 +1290,55 @@ bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1
     /*
     if (!multiple(s_num, dot))
     {
-    	print128("s_num", s_num);
-    	print128("dot", dot);
-    	printf("s not multiple of %s\n", dot_name);
-    	return FALSE;
+        print128("s_num", s_num);
+        print128("dot", dot);
+        printf("s not multiple of %s\n", dot_name);
+        return FALSE;
     }
     s_num /= dot;
     if (!multiple(t_num, dot))
     {
-    	printf("t not multiple of %s\n", dot_name);
-    	return FALSE;
+        printf("t not multiple of %s\n", dot_name);
+        return FALSE;
     }
     t_num /= dot;
-	if (t_num < 0)
-	{
-		printf("t not positive\n");
-		return FALSE;
-	}
-	*/
+    if (t_num < 0)
+    {
+        printf("t not positive\n");
+        return FALSE;
+    }
+    */
     
     if (dot * x1  + s_num * dx1 != dot * x2 + t_num * dx2)
     {
-    	printf("x does not intersect\n");
-    	return FALSE;
+        printf("x does not intersect\n");
+        return FALSE;
     }
     if (dot * y1  + s_num * dy1 != dot * y2 + t_num * dy2)
     {
-    	printf("y does not intersect\n");
-    	return FALSE;
+        printf("y does not intersect\n");
+        return FALSE;
     }
     if (dot * z1  + s_num * dz1 != dot * z2 + t_num * dz2)
     {
-    	printf("z does not intersect\n");
-    	return FALSE;
+        printf("z does not intersect\n");
+        return FALSE;
     }
     
     if (s_num < *min)
-    	*min = s_num;
-    	
+        *min = s_num;
+        
     printf("Correct\n");
     return TRUE;
 }
 
 void solve2()
 {
-	int range = 5;
+    int range = 5;
 
-	int i = 0;
-	int j = 1;
-		
+    int i = 0;
+    int j = 1;
+        
     __int128 x1 = hailstones[i].x;
     __int128 y1 = hailstones[i].y;
     __int128 z1 = hailstones[i].z;
@@ -1352,74 +1352,74 @@ void solve2()
     __int128 dy2 = hailstones[j].dy;
     __int128 dz2 = hailstones[j].dz;
 
-	__int128 f1xy = (x2-x1)*dy2-(y2-y1)*dx2;
-	__int128 f2xy = dy1*dx2-dx1*dy2;
-	__int128 f1xz = (x2-x1)*dz2-(z2-z1)*dx2;
-	__int128 f2xz = dz1*dx2-dx1*dz2;
+    __int128 f1xy = (x2-x1)*dy2-(y2-y1)*dx2;
+    __int128 f2xy = dy1*dx2-dx1*dy2;
+    __int128 f1xz = (x2-x1)*dz2-(z2-z1)*dx2;
+    __int128 f2xz = dz1*dx2-dx1*dz2;
 
-	print128("f1xy", f1xy);	
-	print128("f1xz", f1xz);	
-	print128("f2xy", f2xy);
-	print128("f2xz", f2xz);	
-	
-	for (int rdxi = -range; rdxi <= range; rdxi++)
-	{
-		__int128 rdx = rdxi;
-		for (int rdyi = -range; rdyi <= range; rdyi++)
-		{
-			int gcdxy = absgcd(rdxi, rdyi);
-			__int128 rdy = rdyi;
-			for (int rdzi = -range; rdzi <= range; rdzi++)
-			{
-				//if (absgcd(gcdxy, rdzi) != 1) continue;
-				
-				printf("check %d,%d,%d\n", rdxi, rdyi, rdzi);
-				__int128 rdz = rdzi;
-				
-				__int128 f3xy = rdy*dx2-rdx*dy2;
-				__int128 f3xz = rdz*dx2-rdx*dz2;
-				print128(" f2xy", f3xy);
-				print128(" f3xz", f3xz);
-				__int128 denom = f2xy * f3xz - f2xz * f3xy;
-				__int128 num = f1xz * f3xy - f1xy * f3xz;
-				print128(" denom  ", denom);
-				print128("   num  ", num);
-				if (denom != 0 && num % denom == 0)
-				{
-					__int128 div = num / denom;
-					printf("found %d,%d,%d ", rdxi, rdyi, rdzi);
-					print128(" f2xy", f3xy);
-					print128(" f3xz", f3xz);
-					print128(" denom  ", denom);
-					print128("   num  ", num);
-					print128("   div  ", div);
-					
-					__int128 ax1 = x1 + div * rdx;
-					__int128 ay1 = y1 + div * rdy;
-					__int128 az1 = z1 + div * rdz;
-					
-					
-					// Now check intersection with all other hailstones
-					bool all_match = TRUE;
-					__int128 min = 0;
-					for (int i = 0; i < nr_lines && all_match; i++)
-					{
-						printf("%3d: ", i);
-						all_match = intersect(ax1, ay1, az1, rdx, rdy, rdz, i, &min);
-					}
-					if (all_match)
-						printf("FOUND\n");
-					
-				}
-			}
-		}
-	}
+    print128("f1xy", f1xy);    
+    print128("f1xz", f1xz);    
+    print128("f2xy", f2xy);
+    print128("f2xz", f2xz);    
+    
+    for (int rdxi = -range; rdxi <= range; rdxi++)
+    {
+        __int128 rdx = rdxi;
+        for (int rdyi = -range; rdyi <= range; rdyi++)
+        {
+            int gcdxy = absgcd(rdxi, rdyi);
+            __int128 rdy = rdyi;
+            for (int rdzi = -range; rdzi <= range; rdzi++)
+            {
+                //if (absgcd(gcdxy, rdzi) != 1) continue;
+                
+                printf("check %d,%d,%d\n", rdxi, rdyi, rdzi);
+                __int128 rdz = rdzi;
+                
+                __int128 f3xy = rdy*dx2-rdx*dy2;
+                __int128 f3xz = rdz*dx2-rdx*dz2;
+                print128(" f2xy", f3xy);
+                print128(" f3xz", f3xz);
+                __int128 denom = f2xy * f3xz - f2xz * f3xy;
+                __int128 num = f1xz * f3xy - f1xy * f3xz;
+                print128(" denom  ", denom);
+                print128("   num  ", num);
+                if (denom != 0 && num % denom == 0)
+                {
+                    __int128 div = num / denom;
+                    printf("found %d,%d,%d ", rdxi, rdyi, rdzi);
+                    print128(" f2xy", f3xy);
+                    print128(" f3xz", f3xz);
+                    print128(" denom  ", denom);
+                    print128("   num  ", num);
+                    print128("   div  ", div);
+                    
+                    __int128 ax1 = x1 + div * rdx;
+                    __int128 ay1 = y1 + div * rdy;
+                    __int128 az1 = z1 + div * rdz;
+                    
+                    
+                    // Now check intersection with all other hailstones
+                    bool all_match = TRUE;
+                    __int128 min = 0;
+                    for (int i = 0; i < nr_lines && all_match; i++)
+                    {
+                        printf("%3d: ", i);
+                        all_match = intersect(ax1, ay1, az1, rdx, rdy, rdz, i, &min);
+                    }
+                    if (all_match)
+                        printf("FOUND\n");
+                    
+                }
+            }
+        }
+    }
 }
 
 int absgcd(int a, int b)
 {
-	if (a < 0) a = -a;
-	if (b < 0) b = -b;
+    if (a < 0) a = -a;
+    if (b < 0) b = -b;
     while (a != 0)
     {
         num_t c = b % a;
@@ -1437,7 +1437,7 @@ int absgcd(int a, int b)
 ```c
 bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1, __int128 dz1, int i, __int128 *min, __int128 *g)
 {
-	__int128 x2 = hailstones[i].x;
+    __int128 x2 = hailstones[i].x;
     __int128 y2 = hailstones[i].y;
     __int128 z2 = hailstones[i].z;
     __int128 dx2 = hailstones[i].dx;
@@ -1449,14 +1449,14 @@ bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1
     const char *dot_name = "dot x-y";
     if (dot == 0)
     {
-    	dot = dx1 * dz2 - dx2 * dz1;
-    	dot_name = "dot x-z";
-    	if (dot == 0)
-    	{
-    		printf("Dot x-z is 0\n");
-    		return FALSE;
-    	}
-    	s_num = dx2 * (z1 - z2) + dz2 * (x2 - x1);
+        dot = dx1 * dz2 - dx2 * dz1;
+        dot_name = "dot x-z";
+        if (dot == 0)
+        {
+            printf("Dot x-z is 0\n");
+            return FALSE;
+        }
+        s_num = dx2 * (z1 - z2) + dz2 * (x2 - x1);
         t_num = dx1 * (z1 - z2) + dz1 * (x2 - x1);
     }
     else
@@ -1466,75 +1466,75 @@ bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1
     }
     if (!multiple(s_num, dot))
     {
-    	print128("s_num", s_num);
-    	print128("dot", dot);
-    	printf("s not multiple of %s\n", dot_name);
-    	return FALSE;
+        print128("s_num", s_num);
+        print128("dot", dot);
+        printf("s not multiple of %s\n", dot_name);
+        return FALSE;
     }
     s_num /= dot;
     if (!multiple(t_num, dot))
     {
-    	printf("t not multiple of %s\n", dot_name);
-    	return FALSE;
+        printf("t not multiple of %s\n", dot_name);
+        return FALSE;
     }
     t_num /= dot;
-	if (t_num < 0)
-	{
-		printf("t not positive\n");
-		return FALSE;
-	}
+    if (t_num < 0)
+    {
+        printf("t not positive\n");
+        return FALSE;
+    }
     
     if (x1  + s_num * dx1 != x2 + t_num * dx2)
     {
-    	printf("x does not intersect\n");
-    	return FALSE;
+        printf("x does not intersect\n");
+        return FALSE;
     }
     if (y1  + s_num * dy1 != y2 + t_num * dy2)
     {
-    	printf("y does not intersect\n");
-    	return FALSE;
+        printf("y does not intersect\n");
+        return FALSE;
     }
     if (z1  + s_num * dz1 != z2 + t_num * dz2)
     {
-    	printf("z does not intersect\n");
-    	return FALSE;
+        printf("z does not intersect\n");
+        return FALSE;
     }
     
     if (s_num < *min)
-    	*min = s_num;
+        *min = s_num;
 
-	if (*g == 0)
-		*g = s_num;
-	else
-	{
-		__int128 a = s_num;
-		__int128 b = *g;
-		if (a < 0) a = -a;
-	    while (a != 0)
-	    {
-	        __int128 c = b % a;
-	        b = a;
-	        a = c;
-	    }
-		*g = b;
-	} 
-    	
+    if (*g == 0)
+        *g = s_num;
+    else
+    {
+        __int128 a = s_num;
+        __int128 b = *g;
+        if (a < 0) a = -a;
+        while (a != 0)
+        {
+            __int128 c = b % a;
+            b = a;
+            a = c;
+        }
+        *g = b;
+    } 
+        
     //printf("Correct\n");
-	print128("Correct at ", s_num);
-	print128("           ", *g);
-	//print128("   x ", x1 + s_num * dx1);
-	//print128("   y ", y1 + s_num * dy1);
-	//print128("   z ", z1 + s_num * dz1);
+    print128("Correct at ", s_num);
+    print128("           ", *g);
+    //print128("   x ", x1 + s_num * dx1);
+    //print128("   y ", y1 + s_num * dy1);
+    //print128("   z ", z1 + s_num * dz1);
     return TRUE;
 }
 
 void solve2()
 {
-	int range = 400;
+    int range = 400;
 
-	int i = 0;
-	int j = 1;
-		
+    int i = 0;
+    int j = 1;
+        
     __int128 x1 = hailstones[i].x;
     __int128 y1 = hailstones[i].y;
     __int128 z1 = hailstones[i].z;
@@ -1548,98 +1548,98 @@ void solve2()
     __int128 dy2 = hailstones[j].dy;
     __int128 dz2 = hailstones[j].dz;
 
-	__int128 f1xy = (x2-x1)*dy2-(y2-y1)*dx2;
-	__int128 f2xy = dy1*dx2-dx1*dy2;
-	__int128 f1xz = (x2-x1)*dz2-(z2-z1)*dx2;
-	__int128 f2xz = dz1*dx2-dx1*dz2;
-	__int128 f1yz = (y2-y1)*dz2-(z2-z1)*dy2;
-	__int128 f2yz = dz1*dy2-dy1*dz2;
+    __int128 f1xy = (x2-x1)*dy2-(y2-y1)*dx2;
+    __int128 f2xy = dy1*dx2-dx1*dy2;
+    __int128 f1xz = (x2-x1)*dz2-(z2-z1)*dx2;
+    __int128 f2xz = dz1*dx2-dx1*dz2;
+    __int128 f1yz = (y2-y1)*dz2-(z2-z1)*dy2;
+    __int128 f2yz = dz1*dy2-dy1*dz2;
 
-	print128("f1xy", f1xy);
-	print128("f1xz", f1xz);
-	print128("f1yz", f1yz);
-	print128("f2xy", f2xy);
-	print128("f2xz", f2xz);	
-	print128("f2yz", f2yz);	
-	
-	for (int rdxi = -range; rdxi <= range; rdxi++)
-	{
-		__int128 rdx = rdxi;
-		for (int rdyi = -range; rdyi <= range; rdyi++)
-		{
-			int gcdxy = absgcd(rdxi, rdyi);
-			__int128 rdy = rdyi;
-			for (int rdzi = 1; rdzi <= range; rdzi++)
-			{
-				if (absgcd(gcdxy, rdzi) != 1) continue;
-				
-				//printf("check %d,%d,%d\n", rdxi, rdyi, rdzi);
-				__int128 rdz = rdzi;
-				
-				__int128 f3xy = rdy*dx2-rdx*dy2;
-				__int128 f3xz = rdz*dx2-rdx*dz2;
-				__int128 f3yz = rdz*dy2-rdy*dz2;
-				//print128(" f3xy", f3xy);
-				//print128(" f3xz", f3xz);
-				//print128(" f3yz", f3yz);
-				__int128 denom = f2xy * f3xz - f2xz * f3xy;
-				__int128 num = f1xz * f3xy - f1xy * f3xz;
-				//print128(" denom  ", denom);
-				//print128("   num  ", num);
-				if (denom != 0 && num % denom == 0)
-				{
-					__int128 div = num / denom;
-					printf("found %d,%d,%d ", rdxi, rdyi, rdzi);
-					//print128(" f3xy", f3xy);
-					//print128(" f3xz", f3xz);
-					//print128(" denom  ", denom);
-					//print128("   num  ", num);
-					print128("   div  ", div);
-					denom = f2xy * f3yz - f2yz * f3xy;
-					num = f1yz * f3xy - f1xy * f3yz;
-					div = num / denom;
-					print128(" denom  ", denom);
-					print128("   num  ", num);
-					print128("   div  ", div);
-					denom = f2xz * f3yz - f2yz * f3xz;
-					num = f1yz * f3xz - f1xz * f3yz;
-					div = num / denom;
-					print128(" denom  ", denom);
-					print128("   num  ", num);
-					print128("   div  ", div);
-					
-					__int128 ax1 = x1 + div * dx1;
-					__int128 ay1 = y1 + div * dy1;
-					__int128 az1 = z1 + div * dz1;
-					print128("    ax1 ", ax1);
-					print128("    ay1 ", ay1);
-					print128("    az1 ", az1);
-					
-					
-					// Now check intersection with all other hailstones
-					bool all_match = TRUE;
-					__int128 min = 0;
-					__int128 g = 0;
-					for (int i = 0; i < nr_lines && all_match; i++)
-					{
-						printf("%3d: ", i);
-						all_match = intersect(ax1, ay1, az1, rdx, rdy, rdz, i, &min, &g);
-					}
-					if (all_match)
-					{
-						printf("FOUND\n");
-						print128(" gcd ", g);
-						print128(" min ", min);
-						min -= g;
-						print128("   x ", ax1 + min * rdx);
-						print128("   y ", ay1 + min * rdy);
-						print128("   z ", az1 + min * rdz);
-						print128("ANSWER ", ax1 + min * rdx + ay1 + min * rdy + az1 + min * rdz);
-					}					
-				}
-			}
-		}
-	}
+    print128("f1xy", f1xy);
+    print128("f1xz", f1xz);
+    print128("f1yz", f1yz);
+    print128("f2xy", f2xy);
+    print128("f2xz", f2xz);    
+    print128("f2yz", f2yz);    
+    
+    for (int rdxi = -range; rdxi <= range; rdxi++)
+    {
+        __int128 rdx = rdxi;
+        for (int rdyi = -range; rdyi <= range; rdyi++)
+        {
+            int gcdxy = absgcd(rdxi, rdyi);
+            __int128 rdy = rdyi;
+            for (int rdzi = 1; rdzi <= range; rdzi++)
+            {
+                if (absgcd(gcdxy, rdzi) != 1) continue;
+                
+                //printf("check %d,%d,%d\n", rdxi, rdyi, rdzi);
+                __int128 rdz = rdzi;
+                
+                __int128 f3xy = rdy*dx2-rdx*dy2;
+                __int128 f3xz = rdz*dx2-rdx*dz2;
+                __int128 f3yz = rdz*dy2-rdy*dz2;
+                //print128(" f3xy", f3xy);
+                //print128(" f3xz", f3xz);
+                //print128(" f3yz", f3yz);
+                __int128 denom = f2xy * f3xz - f2xz * f3xy;
+                __int128 num = f1xz * f3xy - f1xy * f3xz;
+                //print128(" denom  ", denom);
+                //print128("   num  ", num);
+                if (denom != 0 && num % denom == 0)
+                {
+                    __int128 div = num / denom;
+                    printf("found %d,%d,%d ", rdxi, rdyi, rdzi);
+                    //print128(" f3xy", f3xy);
+                    //print128(" f3xz", f3xz);
+                    //print128(" denom  ", denom);
+                    //print128("   num  ", num);
+                    print128("   div  ", div);
+                    denom = f2xy * f3yz - f2yz * f3xy;
+                    num = f1yz * f3xy - f1xy * f3yz;
+                    div = num / denom;
+                    print128(" denom  ", denom);
+                    print128("   num  ", num);
+                    print128("   div  ", div);
+                    denom = f2xz * f3yz - f2yz * f3xz;
+                    num = f1yz * f3xz - f1xz * f3yz;
+                    div = num / denom;
+                    print128(" denom  ", denom);
+                    print128("   num  ", num);
+                    print128("   div  ", div);
+                    
+                    __int128 ax1 = x1 + div * dx1;
+                    __int128 ay1 = y1 + div * dy1;
+                    __int128 az1 = z1 + div * dz1;
+                    print128("    ax1 ", ax1);
+                    print128("    ay1 ", ay1);
+                    print128("    az1 ", az1);
+                    
+                    
+                    // Now check intersection with all other hailstones
+                    bool all_match = TRUE;
+                    __int128 min = 0;
+                    __int128 g = 0;
+                    for (int i = 0; i < nr_lines && all_match; i++)
+                    {
+                        printf("%3d: ", i);
+                        all_match = intersect(ax1, ay1, az1, rdx, rdy, rdz, i, &min, &g);
+                    }
+                    if (all_match)
+                    {
+                        printf("FOUND\n");
+                        print128(" gcd ", g);
+                        print128(" min ", min);
+                        min -= g;
+                        print128("   x ", ax1 + min * rdx);
+                        print128("   y ", ay1 + min * rdy);
+                        print128("   z ", az1 + min * rdz);
+                        print128("ANSWER ", ax1 + min * rdx + ay1 + min * rdy + az1 + min * rdz);
+                    }                    
+                }
+            }
+        }
+    }
 }
 
 ```
@@ -1651,7 +1651,7 @@ and I understood what I have done wrong.
 ```c
 bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1, __int128 dz1, int i, __int128 *min, __int128 *g)
 {
-	__int128 x2 = hailstones[i].x;
+    __int128 x2 = hailstones[i].x;
     __int128 y2 = hailstones[i].y;
     __int128 z2 = hailstones[i].z;
     __int128 dx2 = hailstones[i].dx;
@@ -1663,14 +1663,14 @@ bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1
     const char *dot_name = "dot x-y";
     if (dot == 0)
     {
-    	dot = dx1 * dz2 - dx2 * dz1;
-    	dot_name = "dot x-z";
-    	if (dot == 0)
-    	{
-    		printf("Dot x-z is 0\n");
-    		return FALSE;
-    	}
-    	s_num = dx2 * (z1 - z2) + dz2 * (x2 - x1);
+        dot = dx1 * dz2 - dx2 * dz1;
+        dot_name = "dot x-z";
+        if (dot == 0)
+        {
+            printf("Dot x-z is 0\n");
+            return FALSE;
+        }
+        s_num = dx2 * (z1 - z2) + dz2 * (x2 - x1);
         t_num = dx1 * (z1 - z2) + dz1 * (x2 - x1);
     }
     else
@@ -1680,66 +1680,66 @@ bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1
     }
     if (!multiple(s_num, dot))
     {
-    	print128("s_num", s_num);
-    	print128("dot", dot);
-    	printf("s not multiple of %s\n", dot_name);
-    	return FALSE;
+        print128("s_num", s_num);
+        print128("dot", dot);
+        printf("s not multiple of %s\n", dot_name);
+        return FALSE;
     }
     s_num /= dot;
     if (!multiple(t_num, dot))
     {
-    	printf("t not multiple of %s\n", dot_name);
-    	return FALSE;
+        printf("t not multiple of %s\n", dot_name);
+        return FALSE;
     }
     t_num /= dot;
-	if (t_num < 0)
-	{
-		printf("t not positive\n");
-		return FALSE;
-	}
+    if (t_num < 0)
+    {
+        printf("t not positive\n");
+        return FALSE;
+    }
     
     if (x1  + s_num * dx1 != x2 + t_num * dx2)
     {
-    	printf("x does not intersect\n");
-    	return FALSE;
+        printf("x does not intersect\n");
+        return FALSE;
     }
     if (y1  + s_num * dy1 != y2 + t_num * dy2)
     {
-    	printf("y does not intersect\n");
-    	return FALSE;
+        printf("y does not intersect\n");
+        return FALSE;
     }
     if (z1  + s_num * dz1 != z2 + t_num * dz2)
     {
-    	printf("z does not intersect\n");
-    	return FALSE;
+        printf("z does not intersect\n");
+        return FALSE;
     }
     
     if (s_num < *min)
-    	*min = s_num;
+        *min = s_num;
 
-	if (*g == 0)
-		*g = s_num;
-	else
-	{
-		__int128 a = s_num;
-		__int128 b = *g;
-		if (a < 0) a = -a;
-	    while (a != 0)
-	    {
-	        __int128 c = b % a;
-	        b = a;
-	        a = c;
-	    }
-		*g = b;
-	} 
-    	
+    if (*g == 0)
+        *g = s_num;
+    else
+    {
+        __int128 a = s_num;
+        __int128 b = *g;
+        if (a < 0) a = -a;
+        while (a != 0)
+        {
+            __int128 c = b % a;
+            b = a;
+            a = c;
+        }
+        *g = b;
+    } 
+        
     //printf("Correct\n");
-	print128("Correct at ", s_num);
-	print128("           ", *g);
-	print128("   x ", x1 + (t_num - s_num) * dx1);
-	print128("   y ", y1 + (t_num - s_num) * dy1);
-	print128("   z ", z1 + (t_num - s_num) * dz1);
-	print128("ANSWER= ", x1 + (t_num - s_num) * dx1 + y1 + (t_num - s_num) * dy1 + z1 + (t_num - s_num) * dz1);
+    print128("Correct at ", s_num);
+    print128("           ", *g);
+    print128("   x ", x1 + (t_num - s_num) * dx1);
+    print128("   y ", y1 + (t_num - s_num) * dy1);
+    print128("   z ", z1 + (t_num - s_num) * dz1);
+    print128("ANSWER= ", x1 + (t_num - s_num) * dx1 + y1 + (t_num - s_num) * dy1 + z1 + (t_num - s_num) * dz1);
     return TRUE;
 }
 ```
@@ -1751,7 +1751,7 @@ Still not the correct answer.
 ```c
 bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1, __int128 dz1, int i)
 {
-	__int128 x2 = hailstones[i].x;
+    __int128 x2 = hailstones[i].x;
     __int128 y2 = hailstones[i].y;
     __int128 z2 = hailstones[i].z;
     __int128 dx2 = hailstones[i].dx;
@@ -1763,14 +1763,14 @@ bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1
     const char *dot_name = "dot x-y";
     if (dot == 0)
     {
-    	dot = dx1 * dz2 - dx2 * dz1;
-    	dot_name = "dot x-z";
-    	if (dot == 0)
-    	{
-    		printf("Dot x-z is 0\n");
-    		return FALSE;
-    	}
-    	s_num = dx2 * (z1 - z2) + dz2 * (x2 - x1);
+        dot = dx1 * dz2 - dx2 * dz1;
+        dot_name = "dot x-z";
+        if (dot == 0)
+        {
+            printf("Dot x-z is 0\n");
+            return FALSE;
+        }
+        s_num = dx2 * (z1 - z2) + dz2 * (x2 - x1);
         t_num = dx1 * (z1 - z2) + dz1 * (x2 - x1);
     }
     else
@@ -1780,38 +1780,38 @@ bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1
     }
     if (!multiple(s_num, dot))
     {
-    	print128("s_num", s_num);
-    	print128("dot", dot);
-    	printf("s not multiple of %s\n", dot_name);
-    	return FALSE;
+        print128("s_num", s_num);
+        print128("dot", dot);
+        printf("s not multiple of %s\n", dot_name);
+        return FALSE;
     }
     s_num /= dot;
     if (!multiple(t_num, dot))
     {
-    	printf("t not multiple of %s\n", dot_name);
-    	return FALSE;
+        printf("t not multiple of %s\n", dot_name);
+        return FALSE;
     }
     t_num /= dot;
-	if (t_num < 0)
-	{
-		printf("t not positive\n");
-		return FALSE;
-	}
+    if (t_num < 0)
+    {
+        printf("t not positive\n");
+        return FALSE;
+    }
     
     if (x1  + s_num * dx1 != x2 + t_num * dx2)
     {
-    	printf("x does not intersect\n");
-    	return FALSE;
+        printf("x does not intersect\n");
+        return FALSE;
     }
     if (y1  + s_num * dy1 != y2 + t_num * dy2)
     {
-    	printf("y does not intersect\n");
-    	return FALSE;
+        printf("y does not intersect\n");
+        return FALSE;
     }
     if (z1  + s_num * dz1 != z2 + t_num * dz2)
     {
-    	printf("z does not intersect\n");
-    	return FALSE;
+        printf("z does not intersect\n");
+        return FALSE;
     }
     
     return s_num == t_num;
@@ -1819,11 +1819,11 @@ bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1
 
 void solve2()
 {
-	int range = 400;
+    int range = 400;
 
-	int i = 0;
-	int j = 1;
-		
+    int i = 0;
+    int j = 1;
+        
     __int128 x1 = hailstones[i].x;
     __int128 y1 = hailstones[i].y;
     __int128 z1 = hailstones[i].z;
@@ -1837,93 +1837,93 @@ void solve2()
     __int128 dy2 = hailstones[j].dy;
     __int128 dz2 = hailstones[j].dz;
 
-	__int128 f1xy = (x2-x1)*dy2-(y2-y1)*dx2;
-	__int128 f2xy = dy1*dx2-dx1*dy2;
-	__int128 f1xz = (x2-x1)*dz2-(z2-z1)*dx2;
-	__int128 f2xz = dz1*dx2-dx1*dz2;
-	__int128 f1yz = (y2-y1)*dz2-(z2-z1)*dy2;
-	__int128 f2yz = dz1*dy2-dy1*dz2;
+    __int128 f1xy = (x2-x1)*dy2-(y2-y1)*dx2;
+    __int128 f2xy = dy1*dx2-dx1*dy2;
+    __int128 f1xz = (x2-x1)*dz2-(z2-z1)*dx2;
+    __int128 f2xz = dz1*dx2-dx1*dz2;
+    __int128 f1yz = (y2-y1)*dz2-(z2-z1)*dy2;
+    __int128 f2yz = dz1*dy2-dy1*dz2;
 
-	print128("f1xy", f1xy);
-	print128("f1xz", f1xz);
-	print128("f1yz", f1yz);
-	print128("f2xy", f2xy);
-	print128("f2xz", f2xz);	
-	print128("f2yz", f2yz);	
-	
-	for (int rdxi = -range; rdxi <= range; rdxi++)
-	{
-		__int128 rdx = rdxi;
-		for (int rdyi = -range; rdyi <= range; rdyi++)
-		{
-			int gcdxy = absgcd(rdxi, rdyi);
-			__int128 rdy = rdyi;
-			for (int rdzi = 1; rdzi <= range; rdzi++)
-			{
-				if (absgcd(gcdxy, rdzi) != 1) continue;
-				
-				//printf("check %d,%d,%d\n", rdxi, rdyi, rdzi);
-				__int128 rdz = rdzi;
-				
-				__int128 f3xy = rdy*dx2-rdx*dy2;
-				__int128 f3xz = rdz*dx2-rdx*dz2;
-				__int128 f3yz = rdz*dy2-rdy*dz2;
-				//print128(" f3xy", f3xy);
-				//print128(" f3xz", f3xz);
-				//print128(" f3yz", f3yz);
-				__int128 denom = f2xy * f3xz - f2xz * f3xy;
-				__int128 num = f1xz * f3xy - f1xy * f3xz;
-				//print128(" denom  ", denom);
-				//print128("   num  ", num);
-				if (denom != 0 && num % denom == 0)
-				{
-					__int128 div = num / denom;
-					printf("found %d,%d,%d ", rdxi, rdyi, rdzi);
-					//print128(" f3xy", f3xy);
-					//print128(" f3xz", f3xz);
-					//print128(" denom  ", denom);
-					//print128("   num  ", num);
-					print128("   div  ", div);
-					denom = f2xy * f3yz - f2yz * f3xy;
-					num = f1yz * f3xy - f1xy * f3yz;
-					div = num / denom;
-					print128(" denom  ", denom);
-					print128("   num  ", num);
-					print128("   div  ", div);
-					denom = f2xz * f3yz - f2yz * f3xz;
-					num = f1yz * f3xz - f1xz * f3yz;
-					div = num / denom;
-					print128(" denom  ", denom);
-					print128("   num  ", num);
-					print128("   div  ", div);
-					
-					__int128 ax1 = x1 + div * (dx1 - rdx);
-					__int128 ay1 = y1 + div * (dy1 - rdy);
-					__int128 az1 = z1 + div * (dz1 - rdz);
-					print128("    ax1 ", ax1);
-					print128("    ay1 ", ay1);
-					print128("    az1 ", az1);
-					
-					
-					// Now check intersection with all other hailstones
-					bool all_match = TRUE;
-					for (int i = 0; i < nr_lines && all_match; i++)
-					{
-						printf("%3d: ", i);
-						all_match = intersect(ax1, ay1, az1, rdx, rdy, rdz, i);
-					}
-					if (all_match)
-					{
-						printf("FOUND\n");
-						print128("   x ", ax1);
-						print128("   y ", ay1);
-						print128("   z ", az1);
-						print128("ANSWER ", ax1 + ay1 + az1);
-					}					
-				}
-			}
-		}
-	}
+    print128("f1xy", f1xy);
+    print128("f1xz", f1xz);
+    print128("f1yz", f1yz);
+    print128("f2xy", f2xy);
+    print128("f2xz", f2xz);    
+    print128("f2yz", f2yz);    
+    
+    for (int rdxi = -range; rdxi <= range; rdxi++)
+    {
+        __int128 rdx = rdxi;
+        for (int rdyi = -range; rdyi <= range; rdyi++)
+        {
+            int gcdxy = absgcd(rdxi, rdyi);
+            __int128 rdy = rdyi;
+            for (int rdzi = 1; rdzi <= range; rdzi++)
+            {
+                if (absgcd(gcdxy, rdzi) != 1) continue;
+                
+                //printf("check %d,%d,%d\n", rdxi, rdyi, rdzi);
+                __int128 rdz = rdzi;
+                
+                __int128 f3xy = rdy*dx2-rdx*dy2;
+                __int128 f3xz = rdz*dx2-rdx*dz2;
+                __int128 f3yz = rdz*dy2-rdy*dz2;
+                //print128(" f3xy", f3xy);
+                //print128(" f3xz", f3xz);
+                //print128(" f3yz", f3yz);
+                __int128 denom = f2xy * f3xz - f2xz * f3xy;
+                __int128 num = f1xz * f3xy - f1xy * f3xz;
+                //print128(" denom  ", denom);
+                //print128("   num  ", num);
+                if (denom != 0 && num % denom == 0)
+                {
+                    __int128 div = num / denom;
+                    printf("found %d,%d,%d ", rdxi, rdyi, rdzi);
+                    //print128(" f3xy", f3xy);
+                    //print128(" f3xz", f3xz);
+                    //print128(" denom  ", denom);
+                    //print128("   num  ", num);
+                    print128("   div  ", div);
+                    denom = f2xy * f3yz - f2yz * f3xy;
+                    num = f1yz * f3xy - f1xy * f3yz;
+                    div = num / denom;
+                    print128(" denom  ", denom);
+                    print128("   num  ", num);
+                    print128("   div  ", div);
+                    denom = f2xz * f3yz - f2yz * f3xz;
+                    num = f1yz * f3xz - f1xz * f3yz;
+                    div = num / denom;
+                    print128(" denom  ", denom);
+                    print128("   num  ", num);
+                    print128("   div  ", div);
+                    
+                    __int128 ax1 = x1 + div * (dx1 - rdx);
+                    __int128 ay1 = y1 + div * (dy1 - rdy);
+                    __int128 az1 = z1 + div * (dz1 - rdz);
+                    print128("    ax1 ", ax1);
+                    print128("    ay1 ", ay1);
+                    print128("    az1 ", az1);
+                    
+                    
+                    // Now check intersection with all other hailstones
+                    bool all_match = TRUE;
+                    for (int i = 0; i < nr_lines && all_match; i++)
+                    {
+                        printf("%3d: ", i);
+                        all_match = intersect(ax1, ay1, az1, rdx, rdy, rdz, i);
+                    }
+                    if (all_match)
+                    {
+                        printf("FOUND\n");
+                        print128("   x ", ax1);
+                        print128("   y ", ay1);
+                        print128("   z ", az1);
+                        print128("ANSWER ", ax1 + ay1 + az1);
+                    }                    
+                }
+            }
+        }
+    }
 }
 
 ```
