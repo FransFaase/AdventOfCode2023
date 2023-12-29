@@ -596,6 +596,7 @@ void solve1_()
 Okay, I just discovered that my initial method worked perfectly,
 finding the solution without any retracting, but that there was
 an error in the `node_nr` function.
+(For this, I renamed the last occurence of `solve1` into `solve1_`.)
 Now only need to write a function that calculates the size of both
 components. Calculating the size of just one is enough.
 
@@ -624,19 +625,6 @@ void found_solution()
 ```
 
 At 22:53 (CET), I got all the stars.
-
-
-### Second part of the puzzle.
-
-int main(int argc, char *argv[])
-{
-	...
-	solve2();
-}
-
-void solve2()
-{
-}
 
 	
 ### Executing this page

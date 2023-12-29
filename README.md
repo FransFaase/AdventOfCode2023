@@ -3,20 +3,20 @@
 My effort of the [Advent of Code 2023](https://adventofcode.com/2023) contest
 All times are for Central European Timezone (CTE).
 
-### Friday, December 1, 2022
+### Friday, December 1, 2023
 
 I woke up at 7:23 got up and started working at 7:50.
 
 See further [Day 1](Day01.md).
 
-### Saturday, December 2, 2022
+### Saturday, December 2, 2023
 
 I started ag 8:37 and took until 9:29 to finish the first
 part of the puzzle. The second part, I did between 18:27 and 18:35.
 
 See further [Day 2](Day02.md).
 
-### Sunday, December 3, 2022
+### Sunday, December 3, 2023
 
 At was only at the end of the afternoon, at 17:21, that I
 started to work on the puzzle. I stated with writing some
@@ -28,7 +28,7 @@ See further [Day 3](Day03.md).
 I have added the generic code and some other standard
 definition to the file [Std.md](Std.md).
 
-### Monday, December 4, 2022
+### Monday, December 4, 2023
 
 I read the puzzle text in the morning, before I went to the
 office, but only started working on it at 18:44. I solved
@@ -36,7 +36,7 @@ both puzzles in about 70 minutes.
 
 See further [Day 4](Day04.md).
 
-### Tuesday, December 5, 2022
+### Tuesday, December 5, 2023
 
 I solved the first part in the morning. The second part
 took me a big part of the evening to solve. Also watched
@@ -46,14 +46,14 @@ first part, it looks like this is really a hard puzzle.
 
 See further [Day 5](Day05.md).
 
-### Wednesday, December 6, 2022
+### Wednesday, December 6, 2023
 
 I started reading the puzzle aroung 8:45 and started coding
 around 9:00 and finished within half an hour.
 
 See further [Day 6](Day06.md).
 
-### Thursday, December 7, 2022
+### Thursday, December 7, 2023
 
 I did a bit in the morning, but most in the evening. I almost
 quite, because a correct answer for the first part of the
@@ -66,7 +66,7 @@ this happens that an answer can be rejected even it was correct.
 
 See further [Day 7](Day07.md).
 
-### Friday, December 8, 2022
+### Friday, December 8, 2023
 
 I solved the first step in the morning in about half an hour
 and also preparing my lunch. At 18:41, I started again and
@@ -74,7 +74,7 @@ fount the answer for the second half at 19:54.
 
 See further [Day 8](Day08.md).
 
-### Saturday, December 9, 2022
+### Saturday, December 9, 2023
 
 I started reading the puzzle at 8:41 and solved both parts
 at 9:24. Second part of the puzzle was rather easy, having
@@ -83,7 +83,7 @@ answer than the first half.
 
 See further [Day 9](Day09.md).
 
-### Sunday, December 10, 2022
+### Sunday, December 10, 2023
 
 I started reading the puzzle around 11:11 and spend until
 15:05 to find the answer to the first half. Then I did some
@@ -96,14 +96,14 @@ one try.
 
 See further [Day 10](Day10.md).
 
-### Monday, December 11, 2022
+### Monday, December 11, 2023
 
 I started reading the puzzle at 7:44 and found the correct
 answer for both parts of the puzzle at 9:04.
 
 See further [Day 11](Day11.md).
 
-### Tuesday, December 12, 2022
+### Tuesday, December 12, 2023
 
 I started reading the puzzle around 8:20 and took me a long
 time to get everything working during the day. Only at 21:16
@@ -111,14 +111,14 @@ in the evening did I find the solution for the second part.
 
 See further [Day 12](Day12.md).
 
-### Wednesday, December 13, 2022
+### Wednesday, December 13, 2023
 
 I started reading the puzzle around 7:05 and finished both
 parts at 7:46 without many problems.
 
 See further [Day 13](Day13.md).
 
-### Thursday, December 14, 2022
+### Thursday, December 14, 2023
 
 I started reading the puzzle around 7:35 and finished the
 first half in one try at 8:18. Then I had to leave and it
@@ -126,7 +126,7 @@ was only in the evening, that I finished the second part.
 
 See further [Day 14](Day14.md).
 
-### Friday, December 15, 2022
+### Friday, December 15, 2023
 
 I woke up at 5:53 and decided to get up at 5:57. I opened
 my laptop at 6:01 and started reading the text. I solved both
@@ -135,7 +135,7 @@ errors.
 
 See further [Day 15](Day15.md).
 
-### Saturday, December 16, 2022
+### Saturday, December 16, 2023
 
 At 9:55, I had a quick look at the puzzle. It was only
 at 14:47, that I started working on the puzzle. I found
@@ -143,7 +143,7 @@ both answers without much problems at 15:33 and 16:04.
 
 See further [Day 16](Day16.md).
 
-### Sunday, December 17, 2022
+### Sunday, December 17, 2023
 
 I woke up at 5:25 from a dream. After staying in bed a bit more,
 I decided to get up. I switched on my laptop and started at 6:02.
@@ -152,14 +152,14 @@ relatively easy to find.
 
 See further [Day 17](Day17.md).
 
-### Monday, December 18, 2022
+### Monday, December 18, 2023
 
 I only started working at this at 13:54 and found both answers
 at 14:32.
 
 See further [Day 18](Day18.md).
 
-### Tuesday, December 19, 2022
+### Tuesday, December 19, 2023
 
 I started working a bit at 10:44 but then got busy with a lot
 of other things and only continues at 1:12, December 20 to
@@ -167,7 +167,7 @@ find both solutions at 2:48.
 
 See further [Day 19](Day19.md).
 
-### Wednesday, December 20, 2022
+### Wednesday, December 20, 2023
 
 A worked a bit on this at the beginning of the afternoon,
 but only started working on it around 17:00. At 21:11, I found
@@ -179,7 +179,7 @@ second part of the puzzle at 2:51, December 21.
 
 See further [Day 20](Day20.md).
 
-### Thursday, December 21, 2022
+### Thursday, December 21, 2023
 
 I started reading the puzzle around 11:30 and thought a bit about it.
 I started coding at 11:44 and at submitted the correct answer for
@@ -200,7 +200,7 @@ spend time to figure out what was wrong with my earlier implementation.
 
 See further [Day 21](Day21.md).
 
-### Friday, December 22, 2022
+### Friday, December 22, 2023
 
 At 15:16, I started reading the puzzle description. I wrestled a lot
 with the first part. At 19:20, I found the solution for the first
@@ -208,7 +208,7 @@ part and at 19:54, the solution for the second part.
 
 See further [Day 22](Day22.md).
 
-### Saturday, December 23, 2022
+### Saturday, December 23, 2023
 
 I already guessed what would have been the second part of the puzzle
 but still solved the first part building a graph. I did find the solution
@@ -221,7 +221,7 @@ time to 60 miliseconds.
 
 See [Day 23](Day23.md).
 
-### Sunday, December 24, 2022
+### Sunday, December 24, 2023
 
 Spend most of the day working on the first part. Wrote some code for
 big numbers, but although it worked on the example input, it did not work
@@ -233,12 +233,52 @@ Not sure if I am going to more time on this.
 
 See [Day 24](Day24.md).
 
+### Tuesday, December 26, 2023
+
+I continued working on the second part of Day 24.
+
+See [Day 24, December 26](Day24.md#december-26).
+
+### Wednesday, December 27, 2023
+
+Although I became ill with a fever, I managed to working a bit more 
+on the second part of Day 24.
+
+See [Day 24, December 27](Day24.md#december-27).
+
+### Thursday, December 28, 2023
+
+I continued working on the second part of Day 24. I found the
+direction of the rock, but could not find the direction.
+I watched a bit of [Advent of Code 2023 Day 24: Never Tell Me The Odds](https://www.youtube.com/watch?v=guOyA7Ijqgk)
+and I understood what I have done wrong, but I still did not find
+the right answer.
+
+See [Day 24, December 28](Day24.md#december-28).
+
+### Friday, December 29, 2023
+
+I gave the second part of Day 24 another try and did find the solution.
+I have no idea what I did wrong yesterday that I did not find the solution.
+
+See [Day 24, December 29](Day24.md#december-29).
+
+I continued working on the puzzle for Day 25. I already had read it on
+December 25 and had ample time to think about a solution. I tried to
+implement it, but it did not work, as it seemed. After a lot of other
+attempts, I discovered a bug in the function that parsed the input, and
+after I fixed it, it did find the solution with the approach that I had
+thought about.
+
+See [Day 25](Day25.md).
+
 ### Personal stats
 
 ```
       --------Part 1--------   --------Part 2--------
 Day       Time   Rank  Score       Time   Rank  Score
- 24   17:27:08  10617      0          -      -      -
+ 25       >24h  11608      0       >24h   8660      0
+ 24   17:27:08  10617      0       >24h   9763      0
  23   08:38:46   8226      0   14:28:12   7043      0
  22   13:20:46   9005      0   13:54:07   8045      0
  21   05:56:33  10826      0       >24h   9108      0

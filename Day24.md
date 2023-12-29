@@ -1247,7 +1247,7 @@ bool intersect(__int128 x1, __int128 y1, __int128 z1, __int128 dx1, __int128 dy1
 }
 ```
 
-#### December 26
+#### December 27
 
 ```c
 
