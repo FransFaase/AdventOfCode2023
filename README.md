@@ -1,6 +1,6 @@
 # AdventOfCode2023
 
-My effort of the [Advent of Code 2023](https://adventofcode.com/2023) contest
+My effort of the [Advent of Code 2023](https://adventofcode.com/2023) contest.
 All times are for Central European Timezone (CTE).
 
 ### Friday, December 1, 2023
