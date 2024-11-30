@@ -236,7 +236,7 @@ void test_ranges_impl()
 
 ```
 
-### Greatest Common Divisor and Smallest Commoon Multiplier
+### Greatest Common Divisor and Smallest Common Multiplier
 
 ```c
 num_t gcd(num_t a, num_t b)
